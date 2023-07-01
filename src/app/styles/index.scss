@@ -1,0 +1,20 @@
+@import './reset';
+@import './variables/global';
+@import './themes/lightTheme';
+@import './themes/darkTheme';
+
+.app {
+    font: var(--font-main-m);
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    min-height: 100vh;
+}
+
+.page-content {
+    display: flex;
+    height: calc(100vh - var(--navbar-height));
+}
+
+.page-wrapper {
+    flex-grow: 1;
+}
