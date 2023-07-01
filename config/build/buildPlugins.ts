@@ -1,10 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin  from 'mini-css-extract-plugin';
-import {WebpackPluginInstance, ProgressPlugin, DefinePlugin} from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { WebpackPluginInstance, ProgressPlugin, DefinePlugin } from 'webpack';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BuildOptions } from './types/config';
-import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
-export function buildPlugins ({paths, isDev}: BuildOptions): WebpackPluginInstance[] {
+export function buildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInstance[] {
     return [
         new ProgressPlugin(),
         new HtmlWebpackPlugin({
@@ -17,6 +18,6 @@ export function buildPlugins ({paths, isDev}: BuildOptions): WebpackPluginInstan
         new DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
         }),
-        new ReactRefreshWebpackPlugin()
-    ]
+        new ReactRefreshWebpackPlugin(),
+    ];
 }

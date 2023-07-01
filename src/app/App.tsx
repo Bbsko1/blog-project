@@ -1,14 +1,13 @@
 import './styles/index.scss';
-import { classNames } from "shared/lib/classNames";
-import { useTheme } from "./providers/ThemeProvider";
-import { AppRoute } from './providers/routes';
+import { classNames } from 'shared/lib/classNames';
 import { Sidebar } from 'widgets/Sidebar';
 import { Navbar } from 'widgets/Navbar';
 import { Suspense } from 'react';
-
+import { AppRoute } from './providers/routes';
+import { useTheme } from './providers/ThemeProvider';
 
 function App() {
-    const {theme, toggleTheme} = useTheme();
+    const { theme } = useTheme();
 
     return (
         <Suspense fallback="">

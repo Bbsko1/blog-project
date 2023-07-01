@@ -1,1 +1,1 @@
-export {TestPageLazy as TestPage} from "./ui/TestPage.async";
+export { TestPageLazy as TestPage } from './ui/TestPage.async';

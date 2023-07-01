@@ -1,7 +1,7 @@
-import { classNames } from 'shared/lib/classNames'
-import cls from './AppLink.module.scss'
+import { classNames } from 'shared/lib/classNames';
 import { Link, LinkProps } from 'react-router-dom';
 import { FC } from 'react';
+import cls from './AppLink.module.scss';
 
 type AppLinkTheme = 'primary' | 'inverted';
 
@@ -23,5 +23,5 @@ export const AppLink: FC<AppLinkProps> = (props) => {
         <Link to={to} className={classNames(cls.AppLink, {}, [className, cls[theme]])}>
             {children}
         </Link>
-    )
-}
+    );
+};

@@ -1,12 +1,13 @@
-import { Configuration } from "webpack";
-import { buildLoaders } from "./buildLoaders";
-import { buildResolvers } from "./buildResolvers";
-import { buildPlugins } from "./buildPlugins";
-import { BuildOptions } from "./types/config";
-import { buildDevServer } from "./buildDevServer";
+/* eslint-disable import/no-extraneous-dependencies */
+import { Configuration } from 'webpack';
+import { buildLoaders } from './buildLoaders';
+import { buildResolvers } from './buildResolvers';
+import { buildPlugins } from './buildPlugins';
+import { BuildOptions } from './types/config';
+import { buildDevServer } from './buildDevServer';
 
-export function buildWebpackConfig (options: BuildOptions): Configuration {
-    const {mode, paths, isDev} = options;
+export function buildWebpackConfig(options: BuildOptions): Configuration {
+    const { mode, paths, isDev } = options;
 
     return {
         mode,

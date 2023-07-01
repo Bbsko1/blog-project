@@ -1,6 +1,7 @@
-import { RuleSetRule } from "webpack";
+/* eslint-disable import/no-extraneous-dependencies */
+import { RuleSetRule } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { BuildOptions } from "./types/config";
+import { BuildOptions } from './types/config';
 
 export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
     const typescriptRule = {
@@ -13,17 +14,17 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
         use: [
             isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
-                loader: "css-loader",
+                loader: 'css-loader',
                 options: {
                     modules: {
                         auto: true,
                         localIdentName: isDev
-                            ? "[path][name]__[local]--[hash:base64:5]"
-                            : "[hash:base64:5]",
-                    }
-                }
+                            ? '[path][name]__[local]--[hash:base64:5]'
+                            : '[hash:base64:5]',
+                    },
+                },
             },
-            "sass-loader",
+            'sass-loader',
         ],
     };
 
@@ -40,7 +41,7 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
                 loader: 'file-loader',
             },
         ],
-    }
+    };
 
     return [
         typescriptRule,
@@ -48,4 +49,4 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
         svgLoader,
         fileLoader,
     ];
-};
+}
