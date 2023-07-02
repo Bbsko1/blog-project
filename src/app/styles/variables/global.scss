@@ -1,11 +1,11 @@
 :root {
-    --font-family-main: Consolas, "Courier New", monospace, serif;
+    --font-family-main: consolas, 'Courier New', monospace, serif;
     --font-size-m: 16px;
     --line-height-m: 24px;
-    --font-main-m: var(--font-family-main) var(--font-size-m)/var(--line-height-m);
+    --font-main-m: var(--font-family-main) var(--font-size-m) / var(--line-height-m);
     --font-size-l: 24px;
     --line-height-l: 32px;
-    --font-main-l: var(--font-family-main) var(--font-size-l)/var(--line-height-l);
+    --font-main-l: var(--font-family-main) var(--font-size-l) / var(--line-height-l);
     --navbar-height: 50px;
     --sidebar-width: 300px;
     --sidebar-collapse-width: 80px;
