@@ -2,10 +2,10 @@
     --font-family-main: consolas, 'Courier New', monospace, serif;
     --font-size-m: 16px;
     --line-height-m: 24px;
-    --font-main-m: var(--font-family-main) var(--font-size-m) / var(--line-height-m);
+    --font-main-m: var(--font-size-m) / var(--line-height-m) var(--font-family-main);
     --font-size-l: 24px;
     --line-height-l: 32px;
-    --font-main-l: var(--font-family-main) var(--font-size-l) / var(--line-height-l);
+    --font-main-l: var(--font-size-l) / var(--line-height-l) var(--font-family-main);
     --navbar-height: 50px;
     --sidebar-width: 300px;
     --sidebar-collapse-width: 80px;

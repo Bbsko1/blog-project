@@ -1,5 +1,6 @@
 {
   "MainPageTitle": "Главная страница",
   "ChangeLanguage": "English",
-  "AboutPage": "О Нас"
+  "AboutPage": "О Нас",
+  "PageNotFound": "Страница не найдена"
 }
