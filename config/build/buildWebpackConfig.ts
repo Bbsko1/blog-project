@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { Configuration } from 'webpack';
 import { buildLoaders } from './buildLoaders';
 import { buildResolvers } from './buildResolvers';

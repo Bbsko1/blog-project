@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { RuleSetRule } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BuildOptions } from './types/config';
