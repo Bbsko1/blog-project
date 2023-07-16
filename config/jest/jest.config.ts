@@ -23,6 +23,7 @@ export default {
     ],
     moduleDirectories: [
         'node_modules',
+        'src',
     ],
     moduleFileExtensions: [
         'js',
@@ -39,6 +40,10 @@ export default {
     preset: 'ts-jest',
     transform: {
         '^.+\\.ts?$': 'ts-jest',
+    },
+    setupFilesAfterEnv: ['<rootDir>/config/jest/jest-setup.ts'],
+    moduleNameMapper: {
+        '\\.s?css$': 'identity-obj-proxy',
     },
 
     // Indicates whether the coverage information should be collected while executing the test

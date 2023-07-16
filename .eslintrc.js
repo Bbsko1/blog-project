@@ -52,7 +52,7 @@ module.exports = {
             code: 100,
         }],
         'import/no-extraneous-dependencies': ['error', {
-            devDependencies: ['./config/**/*.ts'],
+            devDependencies: ['./config/**/*.ts', '**/*.test.tsx', '**/*.test.ts'],
         }],
     },
     globals: {
