@@ -6,6 +6,7 @@
     background-color: var(--inverted-bg-color);
     padding: 20px 10px;
     transition: width 0.3s;
+    flex-shrink: 0;
 }
 
 .collapse {

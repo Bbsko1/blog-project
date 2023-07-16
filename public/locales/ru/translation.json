@@ -2,5 +2,7 @@
   "MainPageTitle": "Главная страница",
   "ChangeLanguage": "English",
   "AboutPage": "О Нас",
-  "PageNotFound": "Страница не найдена"
+  "PageNotFound": "Страница не найдена",
+  "PageError": "Что-то пошло не так",
+  "ReloadPage": "Перезагрузить страницу"
 }

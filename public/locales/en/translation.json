@@ -2,5 +2,7 @@
   "MainPageTitle": "Main Page",
   "ChangeLanguage": "Русский",
   "AboutPage": "About Page",
-  "PageNotFound": "Page not found"
+  "PageNotFound": "Page not found",
+  "PageError": "Something went wrong",
+  "ReloadPage": "Reload page"
 }
