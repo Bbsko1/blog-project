@@ -46,16 +46,25 @@ module.exports = {
         'import/extensions': 'off',
         'i18next/no-literal-string': [2, {
             markupOnly: true,
+            ignoreAttribute: ['data-testid'],
         }],
         'max-len': [2, {
             ignoreComments: true,
             code: 100,
         }],
         'import/no-extraneous-dependencies': ['error', {
-            devDependencies: ['./config/**/*.ts', '**/*.test.tsx', '**/*.test.ts'],
+            devDependencies: ['./config/**/*.ts', '**/*.test.{tsx, ts}'],
         }],
     },
     globals: {
         __IS_DEV__: true,
     },
+    overrides: [
+        {
+            files: ['**/*.test.{tsx, ts}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            },
+        },
+    ],
 };
