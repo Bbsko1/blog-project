@@ -1,6 +1,14 @@
 .Button {
     cursor: pointer;
-    color: var(--inverted-primary-color);
+    color: var(--secondary-color);
+    transition: 0.3s;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.Button:hover {
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
 }
 
 .clear {
@@ -9,4 +17,14 @@
     border: none;
     background-color: transparent;
     outline: none;
+}
+
+.clear:hover {
+    background-color: transparent;
+    color: var(--secondary-color);
+}
+
+.outline {
+    border: 1px solid var(--secondary-color);
+    background-color: transparent;
 }
