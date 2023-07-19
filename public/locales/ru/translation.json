@@ -4,5 +4,6 @@
   "AboutPage": "О Нас",
   "PageNotFound": "Страница не найдена",
   "PageError": "Что-то пошло не так",
-  "ReloadPage": "Перезагрузить страницу"
+  "ReloadPage": "Перезагрузить страницу",
+  "ButtonSidebar": "переключать"
 }

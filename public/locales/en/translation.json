@@ -4,5 +4,6 @@
   "AboutPage": "About Page",
   "PageNotFound": "Page not found",
   "PageError": "Something went wrong",
-  "ReloadPage": "Reload page"
+  "ReloadPage": "Reload page",
+  "ButtonSidebar": "toggle"
 }
