@@ -2,7 +2,6 @@
     cursor: pointer;
     color: var(--secondary-color);
     transition: 0.3s;
-    border-radius: 6px;
     padding: 15px;
 }
 
@@ -24,7 +23,36 @@
     color: var(--secondary-color);
 }
 
+.background {
+    border: none;
+    background-color: var(--bg-color);
+}
+
+.backgorundInverted {
+    border: none;
+    background-color: var(--inverted-bg-color);
+}
+
 .outline {
     border: 1px solid var(--secondary-color);
     background-color: transparent;
+}
+
+.square {
+    padding: 0;
+}
+
+.square.size_m {
+    width: var(--line-height-m);
+    height: var(--line-height-m);
+}
+
+.square.size_l {
+    width: var(--line-height-l);
+    height: var(--line-height-l);
+}
+
+.square.size_xl {
+    width: var(--line-height-xl);
+    height: var(--line-height-xl);
 }
