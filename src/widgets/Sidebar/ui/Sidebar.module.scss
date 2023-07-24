@@ -26,3 +26,24 @@
     bottom: 40px;
     left: 100%;
 }
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    margin-top: -15px;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+
+    svg {
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+
+    svg path {
+        fill: var(--inverted-secondary-color);
+    }
+}
