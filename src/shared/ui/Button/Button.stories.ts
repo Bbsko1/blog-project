@@ -40,6 +40,32 @@ export const Outline: Story = {
     },
 };
 
+export const OutlineL: Story = {
+    args: {
+        theme: ButtonThemes.OUTLINE,
+        size: 'L',
+    },
+};
+
+export const OutlineXL: Story = {
+    args: {
+        theme: ButtonThemes.OUTLINE,
+        size: 'XL',
+    },
+};
+
+export const Background: Story = {
+    args: {
+        theme: ButtonThemes.BACKGROUND,
+    },
+};
+
+export const BackgroundInverted: Story = {
+    args: {
+        theme: ButtonThemes.BACKGROUND_INVERTED,
+    },
+};
+
 export const DefaultDark: Story = {
     decorators: [
         ThemeDecorator(Theme.DARK),
@@ -62,4 +88,48 @@ export const OutlineDark: Story = {
     decorators: [
         ThemeDecorator(Theme.DARK),
     ],
+};
+
+export const BackgroundDark: Story = {
+    args: {
+        theme: ButtonThemes.BACKGROUND,
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK),
+    ],
+};
+
+export const BackgroundInvertedDark: Story = {
+    args: {
+        theme: ButtonThemes.BACKGROUND_INVERTED,
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK),
+    ],
+};
+
+export const Square: Story = {
+    args: {
+        theme: ButtonThemes.BACKGROUND_INVERTED,
+        children: '<',
+        square: true,
+    },
+};
+
+export const SquareL: Story = {
+    args: {
+        theme: ButtonThemes.BACKGROUND_INVERTED,
+        children: '<',
+        square: true,
+        size: 'L',
+    },
+};
+
+export const SquareXL: Story = {
+    args: {
+        theme: ButtonThemes.BACKGROUND_INVERTED,
+        children: '<',
+        square: true,
+        size: 'XL',
+    },
 };
