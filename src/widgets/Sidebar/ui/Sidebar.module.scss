@@ -8,29 +8,29 @@
     padding: 20px 10px;
     transition: width 0.3s;
     flex-shrink: 0;
+    height: calc(100vh - var(--navbar-height));
 }
 
-.collapse {
-    width: var(--sidebar-collapse-width);
+.linkText {
+    transition: 0.3s;
+    white-space: nowrap;
 }
 
 .switchers {
     display: flex;
     align-items: center;
-    flex-direction: column;
     margin-top: auto;
 }
 
-.collapseBtn {
-    position: absolute;
-    bottom: 40px;
-    left: 100%;
+.themeSwitcher {
+    margin-right: 10px;
 }
 
 .navigation {
     display: flex;
     flex-direction: column;
     margin-top: -15px;
+    width: 100%;
 }
 
 .link {
@@ -46,4 +46,30 @@
     svg path {
         fill: var(--inverted-secondary-color);
     }
+}
+
+.collapse {
+    width: var(--sidebar-collapse-width);
+
+    .linkText {
+        display: none;
+    }
+
+    .link svg {
+        margin-right: 0;
+    }
+
+    .switchers {
+        flex-direction: column;
+    }
+
+    .themeSwitcher {
+        margin-right: 0;
+    }
+}
+
+.collapseBtn {
+    position: absolute;
+    bottom: 40px;
+    left: 100%;
 }

@@ -22,3 +22,18 @@ export const Dark: Story = {
         ThemeDecorator(Theme.DARK),
     ],
 };
+
+export const LightCollapsed: Story = {
+    args: {
+        isCollapsed: true,
+    },
+};
+
+export const DarkCollapsed: Story = {
+    args: {
+        isCollapsed: true,
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK),
+    ],
+};

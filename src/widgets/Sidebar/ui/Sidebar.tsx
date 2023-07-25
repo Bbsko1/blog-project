@@ -12,10 +12,11 @@ import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
     className?: string;
+    isCollapsed?: boolean;
 }
 
-export const Sidebar = ({ className }: SidebarProps) => {
-    const [collapse, setCollapse] = useState(false);
+export const Sidebar = ({ className, isCollapsed = false }: SidebarProps) => {
+    const [collapse, setCollapse] = useState(isCollapsed);
     const { t } = useTranslation();
 
     const toggle = () => {
@@ -41,16 +42,20 @@ export const Sidebar = ({ className }: SidebarProps) => {
             <div className={cls.navigation}>
                 <AppLink className={cls.link} to={RoutePath.main}>
                     <MainIcon />
-                    {t('MainPageTitle')}
+                    <span className={cls.linkText}>
+                        {t('MainPageTitle')}
+                    </span>
                 </AppLink>
                 <AppLink className={cls.link} to={RoutePath.about}>
                     <AboutIcon />
-                    {t('AboutPage')}
+                    <span className={cls.linkText}>
+                        {t('AboutPage')}
+                    </span>
                 </AppLink>
             </div>
 
             <div className={cls.switchers}>
-                <ThemeSwitcher />
+                <ThemeSwitcher className={cls.themeSwitcher} />
                 <LangSwitcher short={collapse} />
             </div>
         </div>
