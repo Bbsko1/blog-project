@@ -66,5 +66,15 @@ module.exports = {
         rules: {
             'i18next/no-literal-string': 'off',
         },
-    }],
+    },
+    {
+        files: ['src/**/*.slice.ts'],
+        // avoid state param assignment
+        rules: {
+            'no-param-reassign': ['error', {
+                props: false,
+            }],
+        },
+    },
+    ],
 };
