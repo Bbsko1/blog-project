@@ -6,7 +6,12 @@ interface PortalProps {
     domNode?: HTMLElement,
 }
 
-export const Portal = ({ children, domNode = document.body }: PortalProps) => {
+export const Portal = (props: PortalProps) => {
+    const {
+        children,
+        domNode = document.querySelector('#root'),
+    } = props;
+
     return (
         createPortal(children, domNode)
     );
