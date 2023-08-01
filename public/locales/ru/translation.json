@@ -6,5 +6,6 @@
   "PageError": "Что-то пошло не так",
   "ReloadPage": "Перезагрузить страницу",
   "ButtonSidebar": "переключать",
-  "ShortLang": "En"
+  "ShortLang": "En",
+  "Login": "Войти"
 }

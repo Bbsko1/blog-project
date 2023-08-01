@@ -62,9 +62,10 @@ module.exports = {
         __IS_DEV__: true,
     },
     overrides: [{
-        files: ['**/*.test.{tsx, ts}'],
+        files: ['**/*.{test,stories}.{tsx,ts}'],
         rules: {
             'i18next/no-literal-string': 'off',
+            'max-len': 'off',
         },
     },
     {
