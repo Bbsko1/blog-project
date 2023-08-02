@@ -7,5 +7,7 @@
   "ReloadPage": "Reload page",
   "ButtonSidebar": "toggle",
   "ShortLang": "Ру",
-  "Login": "Login"
+  "Login": "Login",
+  "increment": "increment",
+  "decrement": "decrement"
 }

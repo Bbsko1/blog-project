@@ -7,5 +7,7 @@
   "ReloadPage": "Перезагрузить страницу",
   "ButtonSidebar": "переключать",
   "ShortLang": "En",
-  "Login": "Войти"
+  "Login": "Войти",
+  "increment": "увеличить",
+  "decrement": "уменьшить"
 }
