@@ -1,6 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Modal } from 'shared/ui/Modal/Modal';
-import cls from './AuthModal.module.scss';
 import { AuthForm } from '../AuthForm/AuthForm';
 
 interface AuthModalProps {
@@ -14,7 +13,7 @@ export const AuthModal = ({ className, closeModal, isOpen }: AuthModalProps) => 
         <Modal
             isOpen={isOpen}
             closeModal={closeModal}
-            className={classNames(cls.AuthModal, {}, [className])}
+            className={classNames('', {}, [className])}
             lazy
         >
             <AuthForm />

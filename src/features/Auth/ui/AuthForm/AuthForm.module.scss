@@ -1,6 +1,10 @@
 .AuthForm {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     min-width: 400px;
+}
+
+.button {
+    align-self: flex-end;
 }

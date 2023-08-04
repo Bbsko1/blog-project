@@ -44,7 +44,7 @@ module.exports = {
         'import/extensions': 'off',
         'i18next/no-literal-string': [2, {
             markupOnly: true,
-            ignoreAttribute: ['data-testid'],
+            ignoreAttribute: ['data-testid', 'name'],
         }],
         'max-len': [2, {
             ignoreComments: true,

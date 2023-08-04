@@ -18,7 +18,6 @@ export const AuthForm = ({ className }: AuthFormProps) => {
 
         const pararms = new FormData(refForm.current);
         const test = Object.fromEntries(pararms.entries());
-        console.log('pararms', pararms);
 
         const response = await fetch('http://localhost:8000/login', {
             method: 'POST',
@@ -29,7 +28,6 @@ export const AuthForm = ({ className }: AuthFormProps) => {
         });
 
         const res = await response.json();
-        console.log('res', res);
     };
 
     return (
@@ -40,7 +38,7 @@ export const AuthForm = ({ className }: AuthFormProps) => {
         >
             <Input name="username" placeholder={t('UserNameForm')} autoFocus />
             <Input name="password" placeholder={t('PasswordForm')} />
-            <Button theme={ButtonThemes.OUTLINE} type="submit">
+            <Button className={cls.button} theme={ButtonThemes.OUTLINE} type="submit">
                 {t('SendLoginForm')}
             </Button>
         </form>
