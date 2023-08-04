@@ -9,5 +9,8 @@
   "ShortLang": "En",
   "Login": "Войти",
   "increment": "увеличить",
-  "decrement": "уменьшить"
+  "decrement": "уменьшить",
+  "UserNameForm": "Логин",
+  "PasswordForm": "Пароль",
+  "SendLoginForm": "Войти"
 }

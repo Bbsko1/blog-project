@@ -9,5 +9,8 @@
   "ShortLang": "Ру",
   "Login": "Login",
   "increment": "increment",
-  "decrement": "decrement"
+  "decrement": "decrement",
+  "UserNameForm": "Login",
+  "PasswordForm": "Password",
+  "SendLoginForm": "Login"
 }

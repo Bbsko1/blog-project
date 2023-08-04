@@ -11,11 +11,18 @@ interface ModalProps {
     children: ReactNode,
     isOpen?: boolean;
     closeModal: () => void;
+    lazy?: boolean;
 }
 
-export const Modal = ({
-    className, children, isOpen = true, closeModal,
-}: ModalProps) => {
+export const Modal = (props: ModalProps) => {
+    const {
+        className,
+        children,
+        isOpen = true,
+        closeModal,
+        lazy,
+    } = props;
+
     const mods: Record<string, boolean> = {
         [cls.open]: isOpen,
     };
@@ -41,6 +48,10 @@ export const Modal = ({
     const stopProp = (evt: MouseEvent) => {
         evt.stopPropagation();
     };
+
+    if (lazy && !isOpen) {
+        return null;
+    }
 
     return (
         <Portal>
