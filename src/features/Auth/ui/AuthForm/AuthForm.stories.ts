@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { AuthForm } from './AuthForm';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -15,7 +16,13 @@ const meta: Meta<typeof AuthForm> = {
         // backgroundColor: { control: 'color' },
     },
     decorators: [
-
+        StoreDecorator({
+            AUTH: {
+                loading: false,
+                username: 'admin',
+                password: '123a',
+            },
+        }),
     ],
 };
 

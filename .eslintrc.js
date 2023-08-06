@@ -51,7 +51,11 @@ module.exports = {
             code: 100,
         }],
         'import/no-extraneous-dependencies': ['error', {
-            devDependencies: ['./config/**/*.ts', '**/*.test.{tsx, ts}'],
+            devDependencies: [
+                './config/**/*.ts',
+                '**/*.test.{tsx,ts}',
+                './src/shared/config/**/*.{tsx,ts}',
+            ],
         }],
         'jsx-a11y/click-events-have-key-events': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
