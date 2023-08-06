@@ -12,5 +12,6 @@
   "decrement": "decrement",
   "UserNameForm": "Login",
   "PasswordForm": "Password",
-  "SendLoginForm": "Login"
+  "SendLoginForm": "Login",
+  "Logout": "Logout"
 }

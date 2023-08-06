@@ -6,7 +6,7 @@ describe('Counter', () => {
     test('test value', () => {
         RenderComponentTest(<Counter />, {
             initialState: {
-                counter: { value: 10 },
+                COUNTER: { value: 10 },
             },
         });
 
@@ -16,7 +16,7 @@ describe('Counter', () => {
     test('test increment', () => {
         RenderComponentTest(<Counter />, {
             initialState: {
-                counter: { value: 10 },
+                COUNTER: { value: 10 },
             },
         });
         const incrementBtn = screen.getByTestId('increment');
@@ -28,7 +28,7 @@ describe('Counter', () => {
     test('test decrement', () => {
         RenderComponentTest(<Counter />, {
             initialState: {
-                counter: { value: 10 },
+                COUNTER: { value: 10 },
             },
         });
         const decrementBtn = screen.getByTestId('decrement');

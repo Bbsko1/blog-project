@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Button, ButtonThemes } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { FormEvent, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { FormParams, sendAuthForm } from 'features/Auth/model/services/sendAuthForm';
 import cls from './AuthForm.module.scss';
 
 interface AuthFormProps {
@@ -12,14 +14,19 @@ interface AuthFormProps {
 export const AuthForm = ({ className }: AuthFormProps) => {
     const { t } = useTranslation();
     const refForm = useRef<HTMLFormElement>();
+    const dispatch = useDispatch();
 
     const onSubmit = async (evt: FormEvent) => {
         evt.preventDefault();
 
-        const pararms = new FormData(refForm.current);
-        const test = Object.fromEntries(pararms.entries());
+        const params = new FormData(refForm.current) as Iterable<
+        [FormParams]
+        >;
+        const test = Object.fromEntries(params);
 
-        const response = await fetch('http://localhost:8000/login', {
+        dispatch(sendAuthForm(test));
+
+        /* const response = await fetch('http://localhost:8000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +34,7 @@ export const AuthForm = ({ className }: AuthFormProps) => {
             body: JSON.stringify(test),
         });
 
-        const res = await response.json();
+        const res = await response.json(); */
     };
 
     return (
@@ -37,7 +44,7 @@ export const AuthForm = ({ className }: AuthFormProps) => {
             onSubmit={onSubmit}
         >
             <Input name="username" placeholder={t('UserNameForm')} autoFocus />
-            <Input name="password" placeholder={t('PasswordForm')} />
+            <Input name="password" placeholder={t('PasswordForm')} type="password" />
             <Button className={cls.button} theme={ButtonThemes.OUTLINE} type="submit">
                 {t('SendLoginForm')}
             </Button>

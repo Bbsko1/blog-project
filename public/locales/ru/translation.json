@@ -12,5 +12,6 @@
   "decrement": "уменьшить",
   "UserNameForm": "Логин",
   "PasswordForm": "Пароль",
-  "SendLoginForm": "Войти"
+  "SendLoginForm": "Войти",
+  "Logout": "Вйти"
 }
