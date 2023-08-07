@@ -34,6 +34,13 @@ export const Clear: Story = {
     },
 };
 
+export const Disabled: Story = {
+    args: {
+        theme: ButtonThemes.OUTLINE,
+        disabled: true,
+    },
+};
+
 export const Outline: Story = {
     args: {
         theme: ButtonThemes.OUTLINE,

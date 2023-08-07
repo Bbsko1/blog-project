@@ -37,3 +37,30 @@ export const Dark: Story = {
         ThemeDecorator(Theme.DARK),
     ],
 };
+
+export const Error: Story = {
+    decorators: [
+        StoreDecorator({
+            AUTH: {
+                loading: false,
+                username: 'admin',
+                password: '123a',
+                error: 'error',
+            },
+        }),
+    ],
+};
+
+export const ErrorDark: Story = {
+    decorators: [
+        ThemeDecorator(Theme.DARK),
+        StoreDecorator({
+            AUTH: {
+                loading: false,
+                username: 'admin',
+                password: '123a',
+                error: 'error',
+            },
+        }),
+    ],
+};
