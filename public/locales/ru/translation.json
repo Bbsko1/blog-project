@@ -13,5 +13,7 @@
   "UserNameForm": "Логин",
   "PasswordForm": "Пароль",
   "SendLoginForm": "Войти",
-  "Logout": "Вйти"
+  "Logout": "Вйти",
+  "AuthFormTitle": "Авторизация",
+  "LoginError": "Неверный логин или пароль"
 }
