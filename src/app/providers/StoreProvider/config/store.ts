@@ -1,19 +1,26 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
-import { authReducer } from 'features/Auth';
 import { StateSchema } from './StateSchema';
+import { createReducerManager } from './reducerManager';
 
-export const createReduxStore = (initialState?: StateSchema) => {
-    const rootReducer = combineReducers<StateSchema>({
+export const createReduxStore = (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) => {
+    const rootReducer: ReducersMapObject<StateSchema> = {
+        ...asyncReducers,
         COUNTER: counterReducer,
         USER: userReducer,
-        AUTH: authReducer,
-    });
+    };
 
-    return configureStore<StateSchema>({
-        reducer: rootReducer,
+    const reducerManager = createReducerManager(rootReducer);
+
+    const store = configureStore<StateSchema>({
+        reducer: reducerManager.reduce,
         devTools: __IS_DEV__,
         preloadedState: initialState,
     });
+
+    // @ts-ignore
+    store.reducerManager = reducerManager;
+
+    return store;
 };

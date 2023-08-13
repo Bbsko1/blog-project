@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
-import { AuthForm } from './AuthForm';
+import AuthForm from './AuthForm';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof AuthForm> = {
@@ -32,9 +32,34 @@ type Story = StoryObj<typeof AuthForm>;
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 export const Default: Story = {};
 
+export const Loading: Story = {
+    decorators: [
+        StoreDecorator({
+            AUTH: {
+                loading: true,
+                username: '',
+                password: '',
+            },
+        }),
+    ],
+};
+
 export const Dark: Story = {
     decorators: [
         ThemeDecorator(Theme.DARK),
+    ],
+};
+
+export const LoadingDark: Story = {
+    decorators: [
+        ThemeDecorator(Theme.DARK),
+        StoreDecorator({
+            AUTH: {
+                loading: true,
+                username: '',
+                password: '',
+            },
+        }),
     ],
 };
 

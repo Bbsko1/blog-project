@@ -5,6 +5,8 @@ import { Input } from 'shared/ui/Input/Input';
 import { FormEvent, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { ReducerList, useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader';
+import { authReducer } from '../../model/slice/auth.slice';
 import { FormParams, sendAuthForm } from '../../model/services/sendAuthForm';
 import { getAuthState } from '../../model/selectors/getAuthState';
 import cls from './AuthForm.module.scss';
@@ -13,12 +15,16 @@ interface AuthFormProps {
     className?: string;
 }
 
-export const AuthForm = ({ className }: AuthFormProps) => {
+const inititalReducer: ReducerList = { AUTH: authReducer };
+
+const AuthForm = ({ className }: AuthFormProps) => {
     const { t } = useTranslation();
     const refForm = useRef<HTMLFormElement>();
     const dispatch = useDispatch();
 
     const { loading, error } = useSelector(getAuthState);
+
+    useDynamicModuleLoader({ reducers: inititalReducer });
 
     const onSubmit = async (evt: FormEvent) => {
         evt.preventDefault();
@@ -52,3 +58,5 @@ export const AuthForm = ({ className }: AuthFormProps) => {
         </form>
     );
 };
+
+export default AuthForm;

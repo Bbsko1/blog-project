@@ -3,7 +3,7 @@ import { User } from 'entities/User';
 import { AuthSchema } from '../types/auth';
 import { sendAuthForm } from '../services/sendAuthForm';
 
-const initialState: AuthSchema = {
+export const authInitialState: AuthSchema = {
     loading: false,
     username: '',
     password: '',
@@ -11,7 +11,7 @@ const initialState: AuthSchema = {
 
 export const authSlice = createSlice({
     name: 'Auth',
-    initialState,
+    initialState: authInitialState,
     reducers: {},
     extraReducers: (builder) => {
         builder

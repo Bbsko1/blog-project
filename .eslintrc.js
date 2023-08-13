@@ -48,7 +48,7 @@ module.exports = {
         }],
         'max-len': [2, {
             ignoreComments: true,
-            code: 100,
+            code: 120,
         }],
         'import/no-extraneous-dependencies': ['error', {
             devDependencies: [
