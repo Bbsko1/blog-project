@@ -15,5 +15,6 @@
   "SendLoginForm": "Войти",
   "Logout": "Выйти",
   "AuthFormTitle": "Авторизация",
-  "LoginError": "Неверный логин или пароль"
+  "LoginError": "Неверный логин или пароль",
+  "ProfilePageTitle": "Страница профиля"
 }

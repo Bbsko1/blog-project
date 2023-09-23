@@ -15,5 +15,6 @@
   "SendLoginForm": "Login",
   "Logout": "Logout",
   "AuthFormTitle": "Authorization",
-  "LoginError": "Incorrect login or password"
+  "LoginError": "Incorrect login or password",
+  "ProfilePageTitle": "Profile Page"
 }
