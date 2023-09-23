@@ -1,12 +1,11 @@
-/* eslint-disable max-len */
-/* eslint-disable i18next/no-literal-string */
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonThemes } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { AuthModal } from 'features/Auth';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useUserAuthData, userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -17,7 +16,7 @@ export const Navbar = ({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const authData = useSelector(useUserAuthData);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const toggleModal = () => {
         setIsOpen(!isOpen);

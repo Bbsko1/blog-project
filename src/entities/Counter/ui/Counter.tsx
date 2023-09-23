@@ -1,7 +1,8 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Button, ButtonThemes } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { decrement, increment } from '../model/slice/counter.slice';
 import cls from './Counter.module.scss';
 import { getCounterValue } from '../model/selectors/getCounterValue';
@@ -12,7 +13,7 @@ interface CounterProps {
 
 export const Counter = ({ className }: CounterProps) => {
     const count = useSelector(getCounterValue);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const { t } = useTranslation();
 
     const incrementValue = () => {

@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { Button, ButtonThemes } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { FormEvent, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ReducerList, useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { authReducer } from '../../model/slice/auth.slice';
 import { FormParams, sendAuthForm } from '../../model/services/sendAuthForm';
 import { getAuthState } from '../../model/selectors/getAuthState';
@@ -20,7 +21,7 @@ const inititalReducer: ReducerList = { AUTH: authReducer };
 const AuthForm = ({ className }: AuthFormProps) => {
     const { t } = useTranslation();
     const refForm = useRef<HTMLFormElement>();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const { loading, error } = useSelector(getAuthState);
 

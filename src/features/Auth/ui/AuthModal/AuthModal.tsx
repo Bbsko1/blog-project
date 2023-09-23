@@ -11,6 +11,8 @@ interface AuthModalProps {
 }
 
 export const AuthModal = ({ className, closeModal, isOpen }: AuthModalProps) => {
+    console.log('isOpen', isOpen);
+
     return (
         <Modal
             isOpen={isOpen}
