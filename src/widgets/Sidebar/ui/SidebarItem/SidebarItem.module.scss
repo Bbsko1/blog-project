@@ -1,0 +1,29 @@
+.linkText {
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+
+    svg {
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+
+    svg path {
+        fill: var(--inverted-secondary-color);
+    }
+}
+
+.collapse {
+    .linkText {
+        display: none;
+    }
+
+    .link svg {
+        margin-right: 0;
+    }
+}
