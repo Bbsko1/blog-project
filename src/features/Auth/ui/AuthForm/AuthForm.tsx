@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonThemes } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { FormEvent, useRef } from 'react';
+import { FormEvent, memo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ReducerList, useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader';
@@ -18,7 +18,7 @@ interface AuthFormProps {
 
 const inititalReducer: ReducerList = { AUTH: authReducer };
 
-const AuthForm = ({ className }: AuthFormProps) => {
+const AuthForm = memo(({ className }: AuthFormProps) => {
     const { t } = useTranslation();
     const refForm = useRef<HTMLFormElement>();
     const dispatch = useAppDispatch();
@@ -58,6 +58,6 @@ const AuthForm = ({ className }: AuthFormProps) => {
             </Button>
         </form>
     );
-};
+});
 
 export default AuthForm;
