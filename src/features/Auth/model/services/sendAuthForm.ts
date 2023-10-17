@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { ThunkConfig } from 'app/providers/StoreProvider';
 import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 
@@ -8,11 +8,13 @@ export interface FormParams {
     password: string;
 }
 
-export const sendAuthForm = createAsyncThunk<User, FormParams, { rejectValue: string }>(
+export const sendAuthForm = createAsyncThunk<User, FormParams, ThunkConfig<string>>(
     'Auth/sendAuthForm',
-    async (userData, { rejectWithValue, dispatch }) => {
+    async (userData, thunkApi) => {
+        const { rejectWithValue, dispatch, extra } = thunkApi;
+
         try {
-            const response = await axios.post<User>('http://localhost:8000/login', userData);
+            const response = await extra.api.post<User>('/login', userData);
 
             if (!response.data) {
                 throw new Error();
