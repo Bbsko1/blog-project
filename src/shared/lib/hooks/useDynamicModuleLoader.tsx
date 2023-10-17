@@ -26,6 +26,8 @@ export const useDynamicModuleLoader = (props: useDynamicModuleLoaderProp) => {
 
     useEffect(() => {
         Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry) => {
+            if (store.getState()[name]) return;
+
             store.reducerManager.add(name, reducer);
             dispatch({ type: `@INIT ${name}` });
         });

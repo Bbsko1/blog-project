@@ -7,7 +7,7 @@ const inititalReducer: ReducerList = { PROFILE: profileReducer };
 function ProfilePage() {
     const { t } = useTranslation();
 
-    useDynamicModuleLoader({ reducers: inititalReducer });
+    useDynamicModuleLoader({ reducers: inititalReducer, removeAftrerUnmount: false });
 
     return (
         <h1>{t('ProfilePageTitle')}</h1>
