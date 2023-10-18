@@ -5,7 +5,14 @@ import { buildCssLoader } from './loaders/buildCssLoader';
 export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
     const typescriptRule = {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: [
+            {
+                loader: 'ts-loader',
+                /* options: {
+                    transpileOnly: true,
+                }, */
+            },
+        ],
         exclude: /node_modules/,
     };
     const cssLoader = buildCssLoader(isDev);

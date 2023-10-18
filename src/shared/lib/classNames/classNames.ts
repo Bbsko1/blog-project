@@ -1,12 +1,12 @@
-type Mods = Record<string, boolean | string>;
+type Mods = Record<string, boolean | string | undefined>;
 
 export const classNames = (
-    cls: string,
+    cls: string | undefined,
     mods: Mods = {},
-    additional: string[] = [],
+    additional: Array<string | undefined> = [],
 ): string => {
     return [
-        cls,
+        cls && cls,
         ...Object.keys(mods).filter((className) => mods[className]),
         ...additional.filter(Boolean),
     ].join(' ');

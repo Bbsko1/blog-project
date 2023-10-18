@@ -6,6 +6,7 @@
         "target": "es5",
         "jsx": "react-jsx",
         "allowJs": true,
+        "strict": true,
         "moduleResolution": "node",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
@@ -17,7 +18,7 @@
             "es2019",
             "dom",
             "dom.iterable"
-          ],
+        ],
     },
     "ts-node": {
         "compilerOptions": {
@@ -28,5 +29,5 @@
         "./config/jest/jest-setup.ts",
         "./src/**/*.ts",
         "./src/**/*.tsx",
-      ],
+    ],
 }
