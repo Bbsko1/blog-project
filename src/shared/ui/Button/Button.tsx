@@ -16,7 +16,7 @@ export enum ButtonThemes {
     CLEAR = 'clear',
     OUTLINE = 'outline',
     BACKGROUND = 'background',
-    BACKGROUND_INVERTED = 'backgorundInverted',
+    BACKGROUND_INVERTED = 'backgroundInverted',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -25,6 +25,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: ButtonSize;
     square?: boolean;
     children: ReactNode;
+    hasBorder?: boolean;
 }
 
 export const Button = memo((props: ButtonProps) => {
@@ -34,6 +35,7 @@ export const Button = memo((props: ButtonProps) => {
         theme,
         size = 'M',
         square,
+        hasBorder = false,
         ...otherProps
     } = props;
 
@@ -43,7 +45,7 @@ export const Button = memo((props: ButtonProps) => {
             className={
                 classNames(
                     cls.Button,
-                    { [cls.square]: square },
+                    { [cls.square]: square, [cls.hasBorder]: hasBorder },
                     [className, cls[theme], cls[ButtonType[size]]],
                 )
             }

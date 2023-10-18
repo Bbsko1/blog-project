@@ -6,7 +6,6 @@ import { CounterSchema } from 'entities/Counter';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { AuthSchema } from 'features/Auth';
-import { NavigateOptions, To } from 'react-router-dom';
 
 export interface StateSchema {
     COUNTER: CounterSchema;

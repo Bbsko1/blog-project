@@ -1,0 +1,15 @@
+.ProfileCard {
+    border: 2px solid var(--inverted-bg-color);
+    padding: 20px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-item {
+    margin: 10px 0;
+}

@@ -12,9 +12,10 @@ export const sendAuthForm = createAsyncThunk<User, FormParams, ThunkConfig<strin
     'Auth/sendAuthForm',
     async (userData, thunkApi) => {
         const { rejectWithValue, dispatch, extra } = thunkApi;
+        const { api } = extra;
 
         try {
-            const response = await extra.api.post<User>('/login', userData);
+            const response = await api.post<User>('/login', userData);
 
             if (!response.data) {
                 throw new Error();
