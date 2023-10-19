@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { DeepPartial } from '@reduxjs/toolkit';
 import { render } from '@testing-library/react';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { ReactNode } from 'react';

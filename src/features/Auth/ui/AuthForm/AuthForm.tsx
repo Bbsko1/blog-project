@@ -20,7 +20,7 @@ const inititalReducer: ReducerList = { AUTH: authReducer };
 
 const AuthForm = memo(({ className }: AuthFormProps) => {
     const { t } = useTranslation();
-    const refForm = useRef<HTMLFormElement>();
+    const refForm = useRef<HTMLFormElement | null>(null);
     const dispatch = useAppDispatch();
 
     const { loading, error } = useSelector(getAuthState);
@@ -29,6 +29,8 @@ const AuthForm = memo(({ className }: AuthFormProps) => {
 
     const onSubmit = async (evt: FormEvent) => {
         evt.preventDefault();
+
+        if (!refForm.current) return;
 
         const params = new FormData(refForm.current) as Iterable<
             [FormParams]

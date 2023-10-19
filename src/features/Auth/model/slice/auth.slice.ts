@@ -26,7 +26,7 @@ export const authSlice = createSlice({
                 state.username = action.payload.username;
                 state.password = action.payload.password;
             })
-            .addCase(sendAuthForm.rejected, (state, action: PayloadAction<string>) => {
+            .addCase(sendAuthForm.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
             });

@@ -26,7 +26,6 @@ export const sendAuthForm = createAsyncThunk<User, FormParams, ThunkConfig<strin
 
             return response.data;
         } catch (err) {
-            console.log(err.response);
             return rejectWithValue('error');
         }
     },

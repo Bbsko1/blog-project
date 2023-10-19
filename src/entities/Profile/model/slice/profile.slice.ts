@@ -23,10 +23,10 @@ export const profileSlice = createSlice({
                 state.isLoading = false;
                 state.data = action.payload;
             })
-            .addCase(fetchUserData.rejected, (state, action: PayloadAction<string>) => {
+            .addCase(fetchUserData.rejected, (state, action) => {
                 state.isLoading = false;
                 state.data = null;
-                state.error = action.payload;
+                state.error = action.payload || null;
             });
     },
 });
