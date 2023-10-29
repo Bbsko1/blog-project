@@ -3,13 +3,28 @@
     padding: 20px;
 }
 
-.profile-header {
+.profile_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.profile-item {
+.profile_item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
     margin: 10px 0;
 }
+
+.isLoading,
+.isError {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+/* .isError {
+    flex-direction: column;
+} */

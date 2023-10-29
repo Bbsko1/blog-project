@@ -2,5 +2,7 @@
     "YourName": "Your Name",
     "YourSecondName": "Your Second Name",
     "userData": "Your data",
-    "EditProfile": "Edit"
+    "EditProfile": "Edit",
+    "HasError": "An error has occurred",
+    "ErrorReload": "Please try to reload the page"
 }

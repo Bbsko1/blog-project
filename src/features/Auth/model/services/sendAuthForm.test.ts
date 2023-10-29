@@ -1,11 +1,8 @@
-import axios from 'axios';
 import { userActions } from 'entities/User';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
 import { sendAuthForm } from './sendAuthForm';
 
 jest.mock('axios');
-
-const mockedAxios = jest.mocked(axios, true);
 
 describe('sendAuthForm.test', () => {
     test('success login', async () => {

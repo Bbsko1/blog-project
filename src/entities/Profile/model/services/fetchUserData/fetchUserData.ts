@@ -11,7 +11,8 @@ export const fetchUserData = createAsyncThunk<Profile, undefined, ThunkConfig<st
         try {
             const response = await api.get<Profile>('/profile');
 
-            return response.data;
+            throw new Error();
+
         } catch (err) {
             return rejectWithValue('error');
         }
