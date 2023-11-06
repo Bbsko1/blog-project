@@ -2,9 +2,9 @@ import {
     AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject, Dispatch,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { AuthSchema } from 'features/Auth';
+import { ProfileSchema } from 'pages/ProfilePage';
 
 export interface StateSchema {
     USER: UserSchema;

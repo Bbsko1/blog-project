@@ -4,15 +4,22 @@ import { fetchUserData } from '../services/fetchUserData/fetchUserData';
 
 export const initialState: ProfileSchema = {
     data: null,
-    isLoading: false,
-    readonly: true,
+    isLoading: true,
+    readonly: false,
     error: null,
 };
 
 export const profileSlice = createSlice({
     name: 'Profile',
     initialState,
-    reducers: {},
+    reducers: {
+        updateProfile: (state, action: PayloadAction<Profile>) => {
+            state.data = {
+                ...state.data,
+                ...action.payload,
+            };
+        },
+    },
     extraReducers(builder) {
         builder
             .addCase(fetchUserData.pending, (state) => {
@@ -32,4 +39,4 @@ export const profileSlice = createSlice({
 });
 
 export const profileReducer = profileSlice.reducer;
-export const profileActions = profileSlice.actions;
+export const { updateProfile } = profileSlice.actions;

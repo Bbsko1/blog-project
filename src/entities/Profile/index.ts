@@ -1,2 +1,2 @@
-export { profileReducer, profileActions } from './model/slice/profile.slice';
-export { ProfileSchema } from './model/types/profile';
+export { ProfileCard } from './ui/ProfileCard/ProfileCard';
+export type { ProfileDataProps } from './module/types/profile';
