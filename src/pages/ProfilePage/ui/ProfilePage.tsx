@@ -36,12 +36,37 @@ function ProfilePage({ className }: ProfilePageProps) {
         dispatch(fetchUserData());
     }, [dispatch]);
 
-    const updateProfileData = useCallback((evt: ChangeEvent<HTMLInputElement>) => {
+    /* const updateProfileFirst = useCallback((evt: ChangeEvent<HTMLInputElement>) => {
         const data: Profile = {
             first: evt.target.value,
         };
 
         dispatch(updateProfile(data));
+    }, [dispatch]); */
+
+    const updateProfileData = useCallback((evt: ChangeEvent<HTMLInputElement>) => {
+        const dataT = evt.target.dataset.type as keyof Profile;
+        const { value } = evt.target;
+
+        const data: Profile = {};
+
+        if (value) {
+            switch (dataT) {
+            case 'first':
+                data.first = value;
+                break;
+            case 'lastname':
+                data.lastname = value;
+                break;
+            case 'age':
+                data.age = value;
+                break;
+            default:
+                break;
+            }
+
+            dispatch(updateProfile(data));
+        }
     }, [dispatch]);
 
     const ProfileData: ProfileDataProps[] = useMemo(() => (
@@ -59,6 +84,13 @@ function ProfilePage({ className }: ProfilePageProps) {
                 onChange: updateProfileData,
                 dataType: 'lastname',
                 textButton: t('YourSecondName'),
+            },
+            {
+                value: userData?.age || '',
+                readOnly: readonly,
+                onChange: updateProfileData,
+                dataType: 'age',
+                textButton: t('YourAge'),
             },
         ]
 

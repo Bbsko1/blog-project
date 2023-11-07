@@ -12,15 +12,13 @@ interface ProfileCardProps extends ProfileDataProps {
 export const ProfileCard = memo(({
     className, dataType, onChange, value, readOnly, textButton,
 }: ProfileCardProps) => {
-    console.log('dataType', dataType);
-
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>
             <div className={cls.profile_item}>
                 <Text text={textButton} />
                 <Input
                     onChange={onChange}
-                    datatype={dataType}
+                    data-type={dataType}
                     value={value}
                     readOnly={readOnly}
                 />
