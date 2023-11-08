@@ -5,5 +5,7 @@
     "EditProfile": "Edit",
     "HasError": "An error has occurred",
     "ErrorReload": "Please try to reload the page",
-    "YourAge": "Your age"
+    "YourAge": "Your age",
+    "SaveProfile": "Save",
+    "CancelEdit": "Cancel"
 }

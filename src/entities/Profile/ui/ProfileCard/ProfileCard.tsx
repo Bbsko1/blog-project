@@ -12,6 +12,8 @@ interface ProfileCardProps extends ProfileDataProps {
 export const ProfileCard = memo(({
     className, dataType, onChange, value, readOnly, textButton,
 }: ProfileCardProps) => {
+    console.log('readOnly', readOnly);
+
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>
             <div className={cls.profile_item}>

@@ -13,6 +13,7 @@ export interface Profile {
 
 export interface ProfileSchema {
     data: Profile | null;
+    duplicateData: Profile | null;
     isLoading: boolean;
     error: string | null;
     readonly: boolean;

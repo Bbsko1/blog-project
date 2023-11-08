@@ -9,12 +9,15 @@ import { useTranslation } from 'react-i18next';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { Button } from 'shared/ui/Button/Button';
-import { profileReducer, updateProfile } from '../model/slice/profile.slice';
+import { Button, ButtonThemes } from 'shared/ui/Button/Button';
+import {
+    cancelEditProfile, profileReducer, toggleReadOnly, updateProfile,
+} from '../model/slice/profile.slice';
 import { getUserData } from '../model/selectors/getUserData/getUserData';
 import { Profile } from '../model/types/profile';
 import { fetchUserData } from '../model/services/fetchUserData/fetchUserData';
 import cls from './ProfilePage.module.scss';
+import { postUserData } from '../model/services/postUserData/postUserData';
 
 const inititalReducer: ReducerList = { PROFILE: profileReducer };
 
@@ -34,15 +37,26 @@ function ProfilePage({ className }: ProfilePageProps) {
 
     useEffect(() => {
         dispatch(fetchUserData());
+
+        return () => {
+            dispatch(toggleReadOnly(true));
+        };
     }, [dispatch]);
 
-    /* const updateProfileFirst = useCallback((evt: ChangeEvent<HTMLInputElement>) => {
-        const data: Profile = {
-            first: evt.target.value,
-        };
+    const toggleEditData = () => {
+        dispatch(toggleReadOnly(!readonly));
+    };
 
-        dispatch(updateProfile(data));
-    }, [dispatch]); */
+    const saveUserData = () => {
+        if (userData) {
+            dispatch(postUserData(userData));
+        }
+    };
+
+    const cancelEdit = () => {
+        dispatch(cancelEditProfile());
+        dispatch(toggleReadOnly(true));
+    };
 
     const updateProfileData = useCallback((evt: ChangeEvent<HTMLInputElement>) => {
         const dataT = evt.target.dataset.type as keyof Profile;
@@ -95,7 +109,7 @@ function ProfilePage({ className }: ProfilePageProps) {
         ]
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    ), [readonly, updateProfileData, userData]);
+    ), [readonly, userData, t]);
 
     if (isLoading) {
         return (
@@ -118,9 +132,25 @@ function ProfilePage({ className }: ProfilePageProps) {
         <>
             <div className={cls.profile_header}>
                 <Text title={t('userData')} />
-                <Button hasBorder>
-                    {t('EditProfile')}
-                </Button>
+
+                {
+                    readonly
+                        ? (
+                            <Button hasBorder onClick={toggleEditData}>
+                                {t('EditProfile')}
+                            </Button>
+                        )
+                        : (
+                            <div className={cls['button-wrapper']}>
+                                <Button theme={ButtonThemes.BACKGROUND_INVERTED} hasBorder onClick={cancelEdit}>
+                                    {t('CancelEdit')}
+                                </Button>
+                                <Button hasBorder onClick={saveUserData}>
+                                    {t('SaveProfile')}
+                                </Button>
+                            </div>
+                        )
+                }
             </div>
 
             <div className={classNames(cls.ProfileCard, {}, [className])}>
