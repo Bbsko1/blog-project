@@ -10,7 +10,7 @@ interface ProfileCardProps extends ProfileDataProps {
 }
 
 export const ProfileCard = memo(({
-    className, dataType, onChange, value, readOnly, textButton,
+    className, dataType, onChange, value, readOnly, textButton, onRef,
 }: ProfileCardProps) => {
     console.log('readOnly', readOnly);
 
@@ -22,6 +22,7 @@ export const ProfileCard = memo(({
                     onChange={onChange}
                     data-type={dataType}
                     value={value}
+                    onRef={onRef}
                     readOnly={readOnly}
                 />
             </div>

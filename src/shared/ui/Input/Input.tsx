@@ -1,11 +1,12 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { InputHTMLAttributes, memo } from 'react';
+import { AllHTMLAttributes, RefObject, memo } from 'react';
 import cls from './Input.module.scss';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends AllHTMLAttributes<HTMLInputElement> {
     className?: string;
     type?: string;
     value?: string;
+    onRef?: RefObject<HTMLInputElement>;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -13,6 +14,7 @@ export const Input = memo((props: InputProps) => {
         className,
         type = 'text',
         value,
+        onRef,
         ...otherProps
     } = props;
 
@@ -21,6 +23,7 @@ export const Input = memo((props: InputProps) => {
             type={type}
             className={classNames(cls.Input, {}, [className])}
             value={value}
+            ref={onRef}
             {...otherProps}
         />
     );

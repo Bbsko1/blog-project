@@ -1,7 +1,7 @@
 import { ReducerList, useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader';
 import { ProfileCard, ProfileDataProps } from 'entities/Profile';
 import {
-    ChangeEvent, useCallback, useEffect, useMemo,
+    ChangeEvent, RefObject, useCallback, useEffect, useMemo, useRef,
 } from 'react';
 import { useAppSelector } from 'shared/lib/hooks/useAppSelector';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -32,8 +32,8 @@ function ProfilePage({ className }: ProfilePageProps) {
     const dispatch = useAppDispatch();
     const hasError = useAppSelector((state) => state?.PROFILE?.error);
     const isLoading = useAppSelector((state) => state?.PROFILE?.isLoading);
-
     const { t } = useTranslation('profile');
+    const firstRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         dispatch(fetchUserData());
@@ -45,6 +45,10 @@ function ProfilePage({ className }: ProfilePageProps) {
 
     const toggleEditData = () => {
         dispatch(toggleReadOnly(!readonly));
+
+        if (readonly) {
+            firstRef.current?.focus();
+        }
     };
 
     const saveUserData = () => {
@@ -91,6 +95,7 @@ function ProfilePage({ className }: ProfilePageProps) {
                 onChange: updateProfileData,
                 dataType: 'first',
                 textButton: t('YourName'),
+                onRef: firstRef,
             },
             {
                 value: userData?.lastname || '',
