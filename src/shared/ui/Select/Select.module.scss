@@ -1,0 +1,21 @@
+.Wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.select {
+    padding: 15px 10px;
+    padding-right: 30px;
+    background-color: #fff;
+    border: 1px solid var(--secondary-color);
+}
+
+.label {
+    color: var(--secondary-color);
+}
+
+.option {
+    background-color: var(--inverted-secondary-color);
+    padding: 0;
+}

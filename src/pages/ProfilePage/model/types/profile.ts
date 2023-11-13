@@ -1,10 +1,11 @@
-import { Country, Currency } from 'shared/const/common';
+import { CurrencyEnum } from 'entities/Currency';
+import { Country } from 'shared/const/common';
 
 export interface Profile {
     first?: string;
     lastname?: string;
     age?: string,
-    currency?: Currency,
+    currency?: CurrencyEnum,
     country?: Country;
     city?: string,
     username?: string;

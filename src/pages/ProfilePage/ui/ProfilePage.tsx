@@ -1,8 +1,6 @@
 import { ReducerList, useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader';
-import { ProfileCard, ProfileDataProps } from 'entities/Profile';
-import {
-    ChangeEvent, RefObject, useCallback, useEffect, useMemo, useRef,
-} from 'react';
+import { ProfileCard } from 'entities/Profile';
+import { useEffect, useRef } from 'react';
 import { useAppSelector } from 'shared/lib/hooks/useAppSelector';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useTranslation } from 'react-i18next';
@@ -11,13 +9,13 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { Button, ButtonThemes } from 'shared/ui/Button/Button';
 import {
-    cancelEditProfile, profileReducer, toggleReadOnly, updateProfile,
+    cancelEditProfile, profileReducer, toggleReadOnly,
 } from '../model/slice/profile.slice';
 import { getUserData } from '../model/selectors/getUserData/getUserData';
-import { Profile } from '../model/types/profile';
 import { fetchUserData } from '../model/services/fetchUserData/fetchUserData';
 import cls from './ProfilePage.module.scss';
-import { postUserData } from '../model/services/postUserData/postUserData';
+import { updateProfileData } from '../model/services/updateProfileData/updateProfileData';
+import { useProfileData } from '../model/hooks/useProfileData';
 
 const inititalReducer: ReducerList = { PROFILE: profileReducer };
 
@@ -29,11 +27,12 @@ function ProfilePage({ className }: ProfilePageProps) {
     useDynamicModuleLoader({ reducers: inititalReducer, removeAftrerUnmount: false });
     const userData = getUserData();
     const readonly = useAppSelector((state) => state?.PROFILE?.readonly);
-    const dispatch = useAppDispatch();
     const hasError = useAppSelector((state) => state?.PROFILE?.error);
     const isLoading = useAppSelector((state) => state?.PROFILE?.isLoading);
+    const dispatch = useAppDispatch();
     const { t } = useTranslation('profile');
     const firstRef = useRef<HTMLInputElement>(null);
+    const profileData = useProfileData(firstRef);
 
     useEffect(() => {
         dispatch(fetchUserData());
@@ -53,7 +52,7 @@ function ProfilePage({ className }: ProfilePageProps) {
 
     const saveUserData = () => {
         if (userData) {
-            dispatch(postUserData(userData));
+            dispatch(updateProfileData(userData));
         }
     };
 
@@ -61,60 +60,6 @@ function ProfilePage({ className }: ProfilePageProps) {
         dispatch(cancelEditProfile());
         dispatch(toggleReadOnly(true));
     };
-
-    const updateProfileData = useCallback((evt: ChangeEvent<HTMLInputElement>) => {
-        const dataT = evt.target.dataset.type as keyof Profile;
-        const { value } = evt.target;
-
-        const data: Profile = {};
-
-        if (value) {
-            switch (dataT) {
-            case 'first':
-                data.first = value;
-                break;
-            case 'lastname':
-                data.lastname = value;
-                break;
-            case 'age':
-                data.age = value;
-                break;
-            default:
-                break;
-            }
-
-            dispatch(updateProfile(data));
-        }
-    }, [dispatch]);
-
-    const ProfileData: ProfileDataProps[] = useMemo(() => (
-        [
-            {
-                value: userData?.first || '',
-                readOnly: readonly,
-                onChange: updateProfileData,
-                dataType: 'first',
-                textButton: t('YourName'),
-                onRef: firstRef,
-            },
-            {
-                value: userData?.lastname || '',
-                readOnly: readonly,
-                onChange: updateProfileData,
-                dataType: 'lastname',
-                textButton: t('YourSecondName'),
-            },
-            {
-                value: userData?.age || '',
-                readOnly: readonly,
-                onChange: updateProfileData,
-                dataType: 'age',
-                textButton: t('YourAge'),
-            },
-        ]
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    ), [readonly, userData, t]);
 
     if (isLoading) {
         return (
@@ -159,7 +104,7 @@ function ProfilePage({ className }: ProfilePageProps) {
             </div>
 
             <div className={classNames(cls.ProfileCard, {}, [className])}>
-                {ProfileData.map((data) => (
+                {profileData.map((data) => (
                     <ProfileCard key={data.dataType} {...data} />
                 ))}
             </div>
