@@ -1,5 +1,5 @@
+import { Country } from 'entities/Countries';
 import { CurrencyEnum } from 'entities/Currency';
-import { Country } from 'shared/const/common';
 
 export interface Profile {
     first?: string;

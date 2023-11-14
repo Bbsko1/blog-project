@@ -4,6 +4,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { memo } from 'react';
 import { Select, SelectOptions } from 'shared/ui/Select/Select';
 import { Currency } from 'entities/Currency';
+import { Countries } from 'entities/Countries';
 import { ProfileDataProps } from '../../module/types/profile';
 import cls from './ProfileCard.module.scss';
 
@@ -33,6 +34,7 @@ export const ProfileCard = memo(({
 
                 <Select label="test" options={options} />
                 <Currency />
+                <Countries />
             </div>
         </div>
     );
