@@ -9,20 +9,14 @@ interface CountriesProps {
     readonly?: boolean;
 }
 
-const countriesData: Record<Country, SelectOptions> = {
-    [Country.Russia]: { value: Country.Russia, content: Country.Russia },
-    [Country.Belarus]: { value: Country.Belarus, content: Country.Belarus },
-    [Country.Kazakhstan]: { value: Country.Kazakhstan, content: Country.Kazakhstan },
-    [Country.Ukraine]: { value: Country.Ukraine, content: Country.Ukraine },
-    [Country.Armenia]: { value: Country.Armenia, content: Country.Armenia },
-};
+const countriesOptions: SelectOptions[] = Object.values(Country).map((val) => ({ value: val, content: val }));
 
 export const Countries = ({
     className, onChange, readonly, value,
 }: CountriesProps) => {
     return (
         <Select
-            options={Object.values(countriesData)}
+            options={countriesOptions}
             className={classNames(undefined, {}, [className])}
             value={value}
             onChange={onChange}

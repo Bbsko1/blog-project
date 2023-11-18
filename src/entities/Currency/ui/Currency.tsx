@@ -9,18 +9,14 @@ interface CurrencyProps {
     readonly?: boolean;
 }
 
-const currencyData: Record<CurrencyEnum, SelectOptions> = {
-    [CurrencyEnum.RUB]: { value: CurrencyEnum.RUB, content: CurrencyEnum.RUB },
-    [CurrencyEnum.USD]: { value: CurrencyEnum.USD, content: CurrencyEnum.USD },
-    [CurrencyEnum.EUR]: { value: CurrencyEnum.EUR, content: CurrencyEnum.EUR },
-};
+const currencyOptions: SelectOptions[] = Object.values(CurrencyEnum).map((val) => ({ value: val, content: val }));
 
 export const Currency = ({
     className, onChange, readonly, value,
 }: CurrencyProps) => {
     return (
         <Select
-            options={Object.values(currencyData)}
+            options={currencyOptions}
             className={classNames(undefined, {}, [className])}
             value={value}
             onChange={onChange}
