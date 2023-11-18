@@ -9,5 +9,7 @@
     "SaveProfile": "Сохранить",
     "CancelEdit": "Отменить",
     "YourCity": "Ваш город",
-    "AvatarLink": "Ссылка на аватар"
+    "AvatarLink": "Ссылка на аватар",
+    "YourCurrency": "Ваша валюта",
+    "YourCountry": "Ваша страна"
 }

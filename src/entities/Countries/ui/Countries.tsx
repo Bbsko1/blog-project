@@ -4,6 +4,9 @@ import { Country } from '../model/types/Countries';
 
 interface CountriesProps {
     className?: string;
+    value?: Country | undefined;
+    onChange?: (value: string) => void;
+    readonly?: boolean;
 }
 
 const countriesData: Record<Country, SelectOptions> = {
@@ -14,8 +17,16 @@ const countriesData: Record<Country, SelectOptions> = {
     [Country.Armenia]: { value: Country.Armenia, content: Country.Armenia },
 };
 
-export const Countries = ({ className }: CountriesProps) => {
+export const Countries = ({
+    className, onChange, readonly, value,
+}: CountriesProps) => {
     return (
-        <Select options={Object.values(countriesData)} className={classNames(undefined, {}, [className])} />
+        <Select
+            options={Object.values(countriesData)}
+            className={classNames(undefined, {}, [className])}
+            value={value}
+            onChange={onChange}
+            readonly={readonly}
+        />
     );
 };
