@@ -28,6 +28,7 @@ function ProfilePage({ className }: ProfilePageProps) {
     const userData = getUserData();
     const readonly = useAppSelector((state) => state?.PROFILE?.readonly);
     const hasError = useAppSelector((state) => state?.PROFILE?.error);
+    const data = useAppSelector((state) => state?.PROFILE?.data);
     const isLoading = useAppSelector((state) => state?.PROFILE?.isLoading);
     const dispatch = useAppDispatch();
     const { t } = useTranslation('profile');
@@ -104,9 +105,10 @@ function ProfilePage({ className }: ProfilePageProps) {
             </div>
 
             <div className={classNames(cls.ProfileCard, {}, [className])}>
-                {profileData.map((data) => (
-                    <ProfileCard key={data.dataType} {...data} />
-                ))}
+                {data && (
+                    <img className={cls.avatar} src={data?.avatar} alt="" />
+                )}
+                <ProfileCard inputProps={profileData} />
             </div>
         </>
 

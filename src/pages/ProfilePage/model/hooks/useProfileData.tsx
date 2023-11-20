@@ -5,6 +5,8 @@ import {
 import { useAppSelector } from 'shared/lib/hooks/useAppSelector';
 import { useTranslation } from 'react-i18next';
 import { ProfileDataProps } from 'entities/Profile';
+import { Countries, Country } from 'entities/Countries';
+import { Currency, CurrencyEnum } from 'entities/Currency';
 import { getUserData } from '../selectors/getUserData/getUserData';
 import { Profile } from '../types/profile';
 import { updateProfile } from '../slice/profile.slice';
@@ -13,15 +15,16 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
     const userData = getUserData();
     const dispatch = useAppDispatch();
     const readonly = useAppSelector((state) => state?.PROFILE?.readonly);
+    const profile = useAppSelector((state) => state?.PROFILE?.data);
     const { t } = useTranslation('profile');
 
     const updateProfileData = useCallback((evt: ChangeEvent<HTMLInputElement>) => {
         const dataT = evt.target.dataset.type as keyof Profile;
         const { value } = evt.target;
 
-        const data: Profile = {};
+        const data: Profile | null = profile ? { ...profile } : null;
 
-        if (value) {
+        if (value && data) {
             switch (dataT) {
             case 'first':
                 data.first = value;
@@ -32,13 +35,39 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
             case 'age':
                 data.age = value;
                 break;
+            case 'city':
+                data.city = value;
+                break;
+            case 'avatar':
+                data.avatar = value;
+                break;
             default:
                 break;
             }
 
             dispatch(updateProfile(data));
         }
-    }, [dispatch]);
+    }, [dispatch, profile]);
+
+    const updateCountry = useCallback((country: Country) => {
+        const data: Profile | null = profile ? { ...profile } : null;
+
+        if (data) {
+            data.country = country;
+
+            dispatch(updateProfile(data));
+        }
+    }, [dispatch, profile]);
+
+    const updateCurrency = useCallback((currency: CurrencyEnum) => {
+        const data: Profile | null = profile ? { ...profile } : null;
+
+        if (data) {
+            data.currency = currency;
+
+            dispatch(updateProfile(data));
+        }
+    }, [dispatch, profile]);
 
     return (
         [
@@ -49,6 +78,7 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
                 dataType: 'first',
                 textButton: t('YourName'),
                 onRef: firstRef,
+                isInput: true,
             },
             {
                 value: userData?.lastname || '',
@@ -56,6 +86,7 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
                 onChange: updateProfileData,
                 dataType: 'lastname',
                 textButton: t('YourSecondName'),
+                isInput: true,
             },
             {
                 value: userData?.age || '',
@@ -63,6 +94,7 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
                 onChange: updateProfileData,
                 dataType: 'age',
                 textButton: t('YourAge'),
+                isInput: true,
             },
             {
                 value: userData?.city || '',
@@ -70,6 +102,7 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
                 onChange: updateProfileData,
                 dataType: 'city',
                 textButton: t('YourCity'),
+                isInput: true,
             },
             {
                 value: userData?.avatar || '',
@@ -77,6 +110,27 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
                 onChange: updateProfileData,
                 dataType: 'avatar',
                 textButton: t('AvatarLink'),
+                isInput: true,
+            },
+            {
+                element: <Countries
+                    readonly={readonly}
+                    value={userData?.country}
+                    onChange={updateCountry}
+                />,
+                textButton: t('YourCountry'),
+                isSelect: true,
+                dataType: 'country',
+            },
+            {
+                element: <Currency
+                    readonly={readonly}
+                    value={userData?.currency}
+                    onChange={updateCurrency}
+                />,
+                textButton: t('YourCurrency'),
+                isSelect: true,
+                dataType: 'currency',
             },
         ]
     );
