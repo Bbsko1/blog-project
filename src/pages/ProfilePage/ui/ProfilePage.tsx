@@ -15,6 +15,7 @@ import { fetchUserData } from '../model/services/fetchUserData/fetchUserData';
 import cls from './ProfilePage.module.scss';
 import { updateProfileData } from '../model/services/updateProfileData/updateProfileData';
 import { useProfileData } from '../model/hooks/useProfileData';
+import { ProfileCardNew } from 'entities/Profile/ui/ProfileCardNew/ProfileCardNew';
 
 const initialReducer: ReducerList = { PROFILE: profileReducer };
 
@@ -107,6 +108,8 @@ function ProfilePage({ className }: ProfilePageProps) {
                     <img className={cls.avatar} src={data?.avatar} alt="" />
                 )}
                 <ProfileCard inputProps={profileData} />
+
+                {userData && <ProfileCardNew fields={userData} />}
             </div>
         </>
 
