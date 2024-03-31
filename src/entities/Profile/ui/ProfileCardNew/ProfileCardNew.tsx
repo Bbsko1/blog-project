@@ -81,13 +81,17 @@ export const ProfileCardNew = ({ fields }: ProfileCardNewProps) => {
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
         <form onSubmit={handleSubmit(onSubmit)}>
-            {/* register your input into the hook by invoking the "register" function */}
-            <input defaultValue="test" {...register('first')} />
+            {(Object.keys(fields) as (keyof Profile)[]).map((field) => {
+                const fieldVal = config?.[field];
 
-            {/* include validation with required or other standard HTML validation rules */}
-            <input {...register('lastname', { required: 'is required field' })} />
-            {/* eslint-disable-next-line i18next/no-literal-string  */}
-            {errors.lastname && <span>This field is required</span>}
+                if (fieldVal?.fieldType === 'input') {
+                    return (
+                        <input key={field} type={fieldVal.type} {...register(field, fieldVal.options)} />
+                    );
+                }
+
+                return null;
+            })}
 
             <input type="submit" />
         </form>
