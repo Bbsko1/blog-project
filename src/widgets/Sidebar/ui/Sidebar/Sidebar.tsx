@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { memo, useState } from 'react';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher';
-import { Button, ButtonThemes } from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/Button';
 import cls from './Sidebar.module.scss';
 import { sidebarItems } from '../../model/items';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
@@ -29,7 +29,7 @@ export const Sidebar = memo(({ className, isCollapsed = false }: SidebarProps) =
                 className={cls.collapseBtn}
                 size="L"
                 square
-                theme={ButtonThemes.BACKGROUND_INVERTED}
+                theme="backgroundInverted"
                 onClick={toggle}
             >
                 {collapse ? '>' : '<'}

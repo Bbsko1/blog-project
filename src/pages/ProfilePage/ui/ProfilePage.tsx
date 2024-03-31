@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { Button, ButtonThemes } from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/Button';
 import {
     cancelEditProfile, profileReducer, toggleReadOnly,
 } from '../model/slice/profile.slice';
@@ -17,14 +17,14 @@ import cls from './ProfilePage.module.scss';
 import { updateProfileData } from '../model/services/updateProfileData/updateProfileData';
 import { useProfileData } from '../model/hooks/useProfileData';
 
-const inititalReducer: ReducerList = { PROFILE: profileReducer };
+const initialReducer: ReducerList = { PROFILE: profileReducer };
 
 interface ProfilePageProps {
-    className?: string;
+    readonly className?: string;
 }
 
 function ProfilePage({ className }: ProfilePageProps) {
-    useDynamicModuleLoader({ reducers: inititalReducer, removeAftrerUnmount: false });
+    useDynamicModuleLoader({ reducers: initialReducer, removeAfterUnmount: false });
     const userData = getUserData();
     const readonly = useAppSelector((state) => state?.PROFILE?.readonly);
     const hasError = useAppSelector((state) => state?.PROFILE?.error);
@@ -73,7 +73,6 @@ function ProfilePage({ className }: ProfilePageProps) {
     if (hasError) {
         return (
             <div className={classNames(cls.ProfileCard, {}, [className, cls.isError])}>
-                {/*  eslint-disable-next-line i18next/no-literal-string */}
                 <Text title={t('HasError')} text={t('ErrorReload')} theme={TextTheme.ERROR} textAlign="center" />
             </div>
         );
@@ -93,7 +92,7 @@ function ProfilePage({ className }: ProfilePageProps) {
                         )
                         : (
                             <div className={cls['button-wrapper']}>
-                                <Button theme={ButtonThemes.BACKGROUND_INVERTED} hasBorder onClick={cancelEdit}>
+                                <Button theme="backgroundInverted" hasBorder onClick={cancelEdit}>
                                     {t('CancelEdit')}
                                 </Button>
                                 <Button hasBorder onClick={saveUserData}>

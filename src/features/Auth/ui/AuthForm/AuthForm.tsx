@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonThemes } from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { FormEvent, memo, useRef } from 'react';
 import { useSelector } from 'react-redux';
@@ -52,7 +52,7 @@ const AuthForm = memo(({ className }: AuthFormProps) => {
             <Input name="password" placeholder={t('PasswordForm')} type="password" />
             <Button
                 className={cls.button}
-                theme={ButtonThemes.OUTLINE}
+                theme="outline"
                 type="submit"
                 disabled={loading}
             >

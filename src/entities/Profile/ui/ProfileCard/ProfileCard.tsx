@@ -15,26 +15,23 @@ export const ProfileCard = memo(({
 }: ProfileCardProps) => {
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>
-            {inputProps && (
-                inputProps.map((prop) => (
-                    <div className={cls.profile_item} key={prop.dataType}>
-                        {prop?.textButton && (<Text text={prop.textButton} />)}
-                        {prop?.isInput && (
-                            <Input
-                                onChange={prop.onChange}
-                                data-type={prop.dataType}
-                                value={prop.value}
-                                onRef={prop.onRef}
-                                readOnly={prop.readOnly}
-                            />
-                        )}
-                        {prop?.isSelect && prop?.element && (
-                            prop.element
-                        )}
-                    </div>
-                ))
-            )}
-
+            {inputProps?.map((prop) => (
+                <div className={cls.profile_item} key={prop.dataType}>
+                    {prop?.textButton && (<Text text={prop.textButton} />)}
+                    {prop?.isInput && (
+                        <Input
+                            onChange={prop.onChange}
+                            data-type={prop.dataType}
+                            value={prop.value}
+                            onRef={prop.onRef}
+                            readOnly={prop.readOnly}
+                        />
+                    )}
+                    {prop?.isSelect && prop?.element && (
+                        prop.element
+                    )}
+                </div>
+            ))}
         </div>
     );
 });

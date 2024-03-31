@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonThemes } from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { memo, useState } from 'react';
 import { AuthModal } from 'features/Auth';
@@ -30,7 +30,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     if (authData) {
         return (
             <div className={classNames(className, {}, [cls.navbar])}>
-                <Button theme={ButtonThemes.CLEAR} onClick={logout}>
+                <Button theme="clear" onClick={logout}>
                     {t('Logout')}
                 </Button>
             </div>
@@ -39,7 +39,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     return (
         <div className={classNames(className, {}, [cls.navbar])}>
-            <Button theme={ButtonThemes.CLEAR} onClick={toggleModal}>
+            <Button theme="clear" onClick={toggleModal}>
                 {t('Login')}
             </Button>
 
