@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { Text, TextTheme } from './Text';
+import { Text } from './Text';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Text> = {
@@ -77,7 +77,7 @@ export const Error: Story = {
     args: {
         title: 'Title',
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, sequi.',
-        theme: TextTheme.ERROR,
+        theme: 'error',
     },
 };
 
@@ -85,7 +85,7 @@ export const ErrorDark: Story = {
     args: {
         title: 'Title',
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, sequi.',
-        theme: TextTheme.ERROR,
+        theme: 'error',
     },
     decorators: [
         ThemeDecorator(Theme.DARK),

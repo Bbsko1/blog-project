@@ -6,12 +6,11 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useTranslation } from 'react-i18next';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Text } from 'shared/ui/Text/Text';
 import { Button } from 'shared/ui/Button/Button';
 import {
     cancelEditProfile, profileReducer, toggleReadOnly,
 } from '../model/slice/profile.slice';
-import { getUserData } from '../model/selectors/getUserData/getUserData';
 import { fetchUserData } from '../model/services/fetchUserData/fetchUserData';
 import cls from './ProfilePage.module.scss';
 import { updateProfileData } from '../model/services/updateProfileData/updateProfileData';
@@ -25,7 +24,7 @@ interface ProfilePageProps {
 
 function ProfilePage({ className }: ProfilePageProps) {
     useDynamicModuleLoader({ reducers: initialReducer, removeAfterUnmount: false });
-    const userData = getUserData();
+    const userData = useAppSelector((state) => state?.PROFILE?.data) || null;
     const readonly = useAppSelector((state) => state?.PROFILE?.readonly);
     const hasError = useAppSelector((state) => state?.PROFILE?.error);
     const data = useAppSelector((state) => state?.PROFILE?.data);
@@ -73,7 +72,7 @@ function ProfilePage({ className }: ProfilePageProps) {
     if (hasError) {
         return (
             <div className={classNames(cls.ProfileCard, {}, [className, cls.isError])}>
-                <Text title={t('HasError')} text={t('ErrorReload')} theme={TextTheme.ERROR} textAlign="center" />
+                <Text title={t('HasError')} text={t('ErrorReload')} theme='error' textAlign="center" />
             </div>
         );
     }

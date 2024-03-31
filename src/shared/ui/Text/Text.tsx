@@ -2,10 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './Text.module.scss';
 
-export enum TextTheme {
-    DEFAULT = 'default',
-    ERROR = 'error',
-}
+type TextTheme = 'default' | 'error';
 
 type TextAlignTypes = 'left' | 'center' | 'right';
 
@@ -22,7 +19,7 @@ export const Text = memo((props: TextProps) => {
         className,
         title,
         text,
-        theme = TextTheme.DEFAULT,
+        theme = 'default',
         textAlign = 'left',
     } = props;
     return (

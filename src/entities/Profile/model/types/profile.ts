@@ -4,7 +4,7 @@ import { InputHTMLAttributes, RefObject } from 'react';
 export interface ProfileDataProps extends InputHTMLAttributes<HTMLInputElement> {
     dataType: keyof Profile;
     textButton?: string;
-    value?: string | undefined;
+    value?: string;
     onRef?: RefObject<HTMLInputElement>;
     isInput?: boolean;
     isSelect?: boolean;

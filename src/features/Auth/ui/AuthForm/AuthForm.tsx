@@ -4,7 +4,7 @@ import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { FormEvent, memo, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Text } from 'shared/ui/Text/Text';
 import { ReducerList, useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { authReducer } from '../../model/slice/auth.slice';
@@ -47,7 +47,7 @@ const AuthForm = memo(({ className }: AuthFormProps) => {
             onSubmit={onSubmit}
         >
             <Text title={t('AuthFormTitle')} />
-            {error && <Text text={t('LoginError')} theme={TextTheme.ERROR} />}
+            {error && <Text text={t('LoginError')} theme="error" />}
             <Input name="username" placeholder={t('UserNameForm')} autoFocus />
             <Input name="password" placeholder={t('PasswordForm')} type="password" />
             <Button

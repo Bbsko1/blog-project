@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { memo } from 'react';
-import { ProfileDataProps } from '../../module/types/profile';
+import { ProfileDataProps } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {

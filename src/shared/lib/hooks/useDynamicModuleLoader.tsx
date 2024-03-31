@@ -12,14 +12,12 @@ export type ReducerList = {
     [name in StateSchemaKeys]?: Reducer;
 }
 
-// type ReducerListEntry = [StateSchemaKeys, Reducer];
-
-interface useDynamicModuleLoaderProp {
+interface UseDynamicModuleLoaderProp {
     reducers: ReducerList;
     removeAfterUnmount?: boolean;
 }
 
-export const useDynamicModuleLoader = (props: useDynamicModuleLoaderProp) => {
+export const useDynamicModuleLoader = (props: UseDynamicModuleLoaderProp) => {
     const { reducers, removeAfterUnmount = true } = props;
     const dispatch = useAppDispatch();
     const store = useStore<StateSchema>() as ReduxStoreWithManager;
@@ -40,7 +38,6 @@ export const useDynamicModuleLoader = (props: useDynamicModuleLoaderProp) => {
                 });
             }
         };
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 };

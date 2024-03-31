@@ -7,12 +7,11 @@ import { useTranslation } from 'react-i18next';
 import { ProfileDataProps } from 'entities/Profile';
 import { Countries, Country } from 'entities/Countries';
 import { Currency, CurrencyEnum } from 'entities/Currency';
-import { getUserData } from '../selectors/getUserData/getUserData';
 import { Profile } from '../types/profile';
 import { updateProfile } from '../slice/profile.slice';
 
 export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDataProps[] => {
-    const userData = getUserData();
+    const userData = useAppSelector((state) => state?.PROFILE?.data) ?? null;
     const dispatch = useAppDispatch();
     const readonly = useAppSelector((state) => state?.PROFILE?.readonly);
     const profile = useAppSelector((state) => state?.PROFILE?.data);
@@ -72,7 +71,7 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
     return (
         [
             {
-                value: userData?.first || '',
+                value: userData?.first ?? '',
                 readOnly: readonly,
                 onChange: updateProfileData,
                 dataType: 'first',
@@ -81,7 +80,7 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
                 isInput: true,
             },
             {
-                value: userData?.lastname || '',
+                value: userData?.lastname ?? '',
                 readOnly: readonly,
                 onChange: updateProfileData,
                 dataType: 'lastname',
@@ -89,7 +88,7 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
                 isInput: true,
             },
             {
-                value: userData?.age || '',
+                value: userData?.age ?? '',
                 readOnly: readonly,
                 onChange: updateProfileData,
                 dataType: 'age',
@@ -97,7 +96,7 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
                 isInput: true,
             },
             {
-                value: userData?.city || '',
+                value: userData?.city ?? '',
                 readOnly: readonly,
                 onChange: updateProfileData,
                 dataType: 'city',
@@ -105,7 +104,7 @@ export const useProfileData = (firstRef: RefObject<HTMLInputElement>): ProfileDa
                 isInput: true,
             },
             {
-                value: userData?.avatar || '',
+                value: userData?.avatar ?? '',
                 readOnly: readonly,
                 onChange: updateProfileData,
                 dataType: 'avatar',

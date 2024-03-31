@@ -3,7 +3,7 @@ import { Profile, ProfileSchema } from '../types/profile';
 import { fetchUserData } from '../services/fetchUserData/fetchUserData';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
-export const initialState: ProfileSchema = {
+const initialState: ProfileSchema = {
     data: null,
     duplicateData: null,
     isLoading: true,
@@ -44,7 +44,7 @@ export const profileSlice = createSlice({
                 state.isLoading = false;
                 state.data = null;
                 state.duplicateData = null;
-                state.error = action.payload || null;
+                state.error = action.payload ?? null;
             })
             // postUserData
             .addCase(updateProfileData.pending, (state) => {
@@ -61,7 +61,7 @@ export const profileSlice = createSlice({
                 state.isLoading = false;
                 state.data = null;
                 state.duplicateData = null;
-                state.error = action.payload || null;
+                state.error = action.payload ?? null;
             });
     },
 });
