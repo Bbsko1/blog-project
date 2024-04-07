@@ -32,13 +32,18 @@ export const Select = ({
     };
 
     return (
-        <div className={classNames(cls.Wrapper, {}, [className])}>
+        <div className={cls.Wrapper}>
             {label && (
                 <span className={cls.label}>
                     {label}
                 </span>
             )}
-            <select className={cls.select} value={value} onChange={changeEvent} disabled={readonly}>
+            <select
+                className={classNames(cls.select, {}, [className])}
+                value={value}
+                onChange={changeEvent}
+                disabled={readonly}
+            >
                 {optionElems}
             </select>
         </div>

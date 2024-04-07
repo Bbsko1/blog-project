@@ -7,6 +7,7 @@ interface InputProps extends AllHTMLAttributes<HTMLInputElement> {
     type?: string;
     value?: string;
     onRef?: RefObject<HTMLInputElement>;
+    isError?: boolean;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -15,13 +16,14 @@ export const Input = memo((props: InputProps) => {
         type = 'text',
         value,
         onRef,
+        isError,
         ...otherProps
     } = props;
 
     return (
         <input
             type={type}
-            className={classNames(cls.Input, {}, [className])}
+            className={classNames(cls.Input, { [cls.error]: isError }, [className])}
             value={value}
             ref={onRef}
             {...otherProps}

@@ -69,7 +69,20 @@ export const useProfileDefaultData = (
         },
         currency: {
             fieldType: 'select',
-            values: ['RUB', 'USD', 'EUR'],
+            values: [
+                {
+                    content: 'RUB',
+                    value: 'RUB',
+                },
+                {
+                    content: 'USD',
+                    value: 'USD',
+                },
+                {
+                    content: 'EUR',
+                    value: 'EUR',
+                },
+            ],
             label: t('YourCurrency'),
             options: {
                 disabled: readOnly,
@@ -77,7 +90,28 @@ export const useProfileDefaultData = (
         },
         country: {
             fieldType: 'select',
-            values: ['Russia', 'Belarus', 'Ukraine', 'Kazahstan', 'Armenia'],
+            values: [
+                {
+                    content: 'Russia',
+                    value: 'Russia',
+                },
+                {
+                    content: 'Belarus',
+                    value: 'Belarus',
+                },
+                {
+                    content: 'Ukraine',
+                    value: 'Ukraine',
+                },
+                {
+                    content: 'Kazahstan',
+                    value: 'Kazahstan',
+                },
+                {
+                    content: 'Armenia',
+                    value: 'Armenia',
+                },
+            ],
             label: t('YourCountry'),
             options: {
                 disabled: readOnly,

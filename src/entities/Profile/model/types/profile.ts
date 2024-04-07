@@ -1,6 +1,7 @@
 import { Profile } from 'pages/ProfilePage/model/types/profile';
 import { HTMLInputTypeAttribute, InputHTMLAttributes, RefObject } from 'react';
 import { RegisterOptions } from 'react-hook-form';
+import { SelectOptions } from 'shared/ui/Select/Select';
 
 export interface ProfileDataProps extends InputHTMLAttributes<HTMLInputElement> {
     dataType: keyof Profile;
@@ -25,5 +26,5 @@ export interface InputField extends FieldType {
 
 export interface SelectField extends FieldType {
     fieldType: 'select';
-    values: string[];
+    values: SelectOptions[]
 }
