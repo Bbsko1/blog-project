@@ -1,6 +1,5 @@
 import { ReducerList, useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader';
-import { ProfileCard } from 'entities/Profile';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useAppSelector } from 'shared/lib/hooks/useAppSelector';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useTranslation } from 'react-i18next';
@@ -8,14 +7,13 @@ import { Loader } from 'shared/ui/Loader/Loader';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { Button } from 'shared/ui/Button/Button';
-import {
-    cancelEditProfile, profileReducer, toggleReadOnly,
-} from '../model/slice/profile.slice';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { ProfileCardNew } from 'entities/Profile';
+import { profileReducer, toggleReadOnly } from '../model/slice/profile.slice';
 import { fetchUserData } from '../model/services/fetchUserData/fetchUserData';
 import cls from './ProfilePage.module.scss';
 import { updateProfileData } from '../model/services/updateProfileData/updateProfileData';
-import { useProfileData } from '../model/hooks/useProfileData';
-import { ProfileCardNew } from 'entities/Profile/ui/ProfileCardNew/ProfileCardNew';
+import { Profile } from '../model/types/profile';
 
 const initialReducer: ReducerList = { PROFILE: profileReducer };
 
@@ -32,8 +30,8 @@ function ProfilePage({ className }: ProfilePageProps) {
     const isLoading = useAppSelector((state) => state?.PROFILE?.isLoading);
     const dispatch = useAppDispatch();
     const { t } = useTranslation('profile');
-    const firstRef = useRef<HTMLInputElement>(null);
-    const profileData = useProfileData(firstRef);
+    const methods = useForm<Partial<Profile>>();
+    const { handleSubmit } = methods;
 
     useEffect(() => {
         dispatch(fetchUserData());
@@ -45,20 +43,17 @@ function ProfilePage({ className }: ProfilePageProps) {
 
     const toggleEditData = () => {
         dispatch(toggleReadOnly(!readonly));
+    };
 
-        if (readonly) {
-            firstRef.current?.focus();
-        }
+    const onSubmit: SubmitHandler<Partial<Profile>> = (data) => {
+        dispatch(updateProfileData(data));
     };
 
     const saveUserData = () => {
-        if (userData) {
-            dispatch(updateProfileData(userData));
-        }
+        handleSubmit(onSubmit)();
     };
 
     const cancelEdit = () => {
-        dispatch(cancelEditProfile());
         dispatch(toggleReadOnly(true));
     };
 
@@ -73,13 +68,13 @@ function ProfilePage({ className }: ProfilePageProps) {
     if (hasError) {
         return (
             <div className={classNames(cls.ProfileCard, {}, [className, cls.isError])}>
-                <Text title={t('HasError')} text={t('ErrorReload')} theme='error' textAlign="center" />
+                <Text title={t('HasError')} text={t('ErrorReload')} theme="error" textAlign="center" />
             </div>
         );
     }
 
     return (
-        <>
+        <FormProvider {...methods}>
             <div className={cls.profile_header}>
                 <Text title={t('userData')} />
 
@@ -107,12 +102,14 @@ function ProfilePage({ className }: ProfilePageProps) {
                 {data && (
                     <img className={cls.avatar} src={data?.avatar} alt="" />
                 )}
-                <ProfileCard inputProps={profileData} />
 
-                {userData && <ProfileCardNew fields={userData} />}
+                <ProfileCardNew
+                    fields={userData}
+                    readOnly={readonly ?? false}
+                    onSubmit={onSubmit}
+                />
             </div>
-        </>
-
+        </FormProvider>
     );
 }
 

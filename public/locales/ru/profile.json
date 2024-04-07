@@ -11,5 +11,8 @@
     "YourCity": "Ваш город",
     "AvatarLink": "Ссылка на аватар",
     "YourCurrency": "Ваша валюта",
-    "YourCountry": "Ваша страна"
+    "YourCountry": "Ваша страна",
+    "RequiredField": "Поле обязательное",
+    "RealAge": "Введите ваш реальный возраст",
+    "InvalidLink": "Введите корректную ссылку"
 }

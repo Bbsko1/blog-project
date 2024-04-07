@@ -1,2 +1,2 @@
-export { ProfileCard } from './ui/ProfileCard/ProfileCard';
+export { ProfileCardNew } from './ui/ProfileCardNew/ProfileCardNew';
 export type { ProfileDataProps } from './model/types/profile';

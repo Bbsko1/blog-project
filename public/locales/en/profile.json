@@ -11,5 +11,8 @@
     "YourCity": "Your City",
     "AvatarLink": "Avatar link",
     "YourCurrency": "Your currency",
-    "YourCountry": "Your country"
+    "YourCountry": "Your country",
+    "RequiredField": "This is required field",
+    "RealAge": "Enter your real age",
+    "InvalidLink": "Enter the correct link"
 }

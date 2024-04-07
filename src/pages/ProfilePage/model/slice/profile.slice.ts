@@ -5,7 +5,6 @@ import { updateProfileData } from '../services/updateProfileData/updateProfileDa
 
 const initialState: ProfileSchema = {
     data: null,
-    duplicateData: null,
     isLoading: true,
     readonly: true,
     error: null,
@@ -24,9 +23,6 @@ export const profileSlice = createSlice({
         toggleReadOnly: (state, action: PayloadAction<boolean>) => {
             state.readonly = action.payload;
         },
-        cancelEditProfile: (state) => {
-            state.data = state.duplicateData;
-        },
     },
     extraReducers(builder) {
         builder
@@ -38,12 +34,10 @@ export const profileSlice = createSlice({
             .addCase(fetchUserData.fulfilled, (state, action: PayloadAction<Profile>) => {
                 state.isLoading = false;
                 state.data = action.payload;
-                state.duplicateData = action.payload;
             })
             .addCase(fetchUserData.rejected, (state, action) => {
                 state.isLoading = false;
                 state.data = null;
-                state.duplicateData = null;
                 state.error = action.payload ?? null;
             })
             // postUserData
@@ -55,16 +49,14 @@ export const profileSlice = createSlice({
             .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
                 state.isLoading = false;
                 state.data = action.payload;
-                state.duplicateData = action.payload;
             })
             .addCase(updateProfileData.rejected, (state, action) => {
                 state.isLoading = false;
                 state.data = null;
-                state.duplicateData = null;
                 state.error = action.payload ?? null;
             });
     },
 });
 
 export const profileReducer = profileSlice.reducer;
-export const { updateProfile, toggleReadOnly, cancelEditProfile } = profileSlice.actions;
+export const { updateProfile, toggleReadOnly } = profileSlice.actions;
