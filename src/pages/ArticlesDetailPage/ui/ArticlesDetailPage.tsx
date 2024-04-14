@@ -9,8 +9,6 @@ interface ArticlesDetailPageProps {
 const ArticlesDetailPage = ({ className }: ArticlesDetailPageProps) => {
     const { id } = useParams();
 
-    console.log('id', id);
-
     return (
         // eslint-disable-next-line i18next/no-literal-string
         <div className={classNames(cls.articlesDetailPage, {}, [className])}>
