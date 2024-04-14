@@ -27,7 +27,7 @@ const AuthForm = memo(({ className }: AuthFormProps) => {
 
     useDynamicModuleLoader({ reducers: inititalReducer });
 
-    const onSubmit = async (evt: FormEvent) => {
+    const onSubmit = (evt: FormEvent) => {
         evt.preventDefault();
 
         if (!refForm.current) return;

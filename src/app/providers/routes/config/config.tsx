@@ -2,10 +2,16 @@ import { AboutPage } from 'pages/AboutPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
+import { ReactElement } from 'react';
 import { RouteProps } from 'react-router-dom';
 import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 
-export const routeConfig: Record<AppRoutes, RouteProps> = {
+interface CustomRouteProps extends RouteProps {
+    isAuthOnly?: boolean;
+    element: ReactElement;
+}
+
+export const routeConfig: Record<AppRoutes, CustomRouteProps> = {
     [AppRoutes.MAIN]: {
         element: <MainPage />,
         path: RoutePath[AppRoutes.MAIN],
@@ -17,6 +23,7 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     [AppRoutes.PROFILE]: {
         element: <ProfilePage />,
         path: RoutePath[AppRoutes.PROFILE],
+        isAuthOnly: true,
     },
     // last
     [AppRoutes.NOT_FOUND]: {
