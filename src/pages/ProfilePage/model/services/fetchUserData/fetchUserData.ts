@@ -9,13 +9,13 @@ export const fetchUserData = createAsyncThunk<Profile, undefined, ThunkConfig<st
         const { api } = extra;
 
         try {
-            const response = await api.get<Profile>('/profile');
+            const { data } = await api.get<Profile>('/profile');
 
-            if (!response.data) {
+            if (!data || typeof data !== 'object') {
                 throw new Error();
             }
 
-            return response.data;
+            return data;
         } catch (err) {
             return rejectWithValue('error');
         }

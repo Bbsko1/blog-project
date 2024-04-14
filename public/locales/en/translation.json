@@ -16,5 +16,6 @@
   "Logout": "Logout",
   "AuthFormTitle": "Authorization",
   "LoginError": "Incorrect login or password",
-  "ProfilePageTitle": "Profile Page"
+  "ProfilePageTitle": "Profile Page",
+  "ArticlesPageTitle": "Articles"
 }

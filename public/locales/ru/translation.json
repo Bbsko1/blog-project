@@ -16,5 +16,6 @@
   "Logout": "Выйти",
   "AuthFormTitle": "Авторизация",
   "LoginError": "Неверный логин или пароль",
-  "ProfilePageTitle": "Страница профиля"
+  "ProfilePageTitle": "Страница профиля",
+  "ArticlesPageTitle": "Статьи"
 }
