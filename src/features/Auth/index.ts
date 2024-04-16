@@ -1,2 +1,2 @@
 export { AuthModal } from './ui/AuthModal/AuthModal';
-export { AuthSchema } from './model/types/auth';
+export type { AuthSchema } from './model/types/auth';
