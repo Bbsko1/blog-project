@@ -1,42 +1,30 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useEffect } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader';
-import { useAppSelector } from 'shared/lib/hooks/useAppSelector';
 import cls from './Article.module.scss';
-import { fetchArticles } from '../model/services/fetchArticles';
-import { articleReducer } from '../model/slice/article.slice';
+import { ArticleData } from '../model/types';
+import { ArticleText } from './ArticleText/ArticleText';
+import { ArticleCode } from './ArticleCode/ArticleCode';
+import { ArticleImage } from './ArticleImage/ArticleImage';
 
 interface ArticleProps {
     className?: string;
+    article: ArticleData;
 }
 
-export const Article = ({ className }: ArticleProps) => {
-    useDynamicModuleLoader({ reducers: { ARTICLES: articleReducer } });
-    const dispatch = useAppDispatch();
-    const articles = useAppSelector((state) => state.ARTICLES?.articles);
-
-    useEffect(() => {
-        dispatch(fetchArticles());
-    }, [dispatch]);
-
+export const Article = ({ className, article }: ArticleProps) => {
     return (
-        // eslint-disable-next-line i18next/no-literal-string
         <div className={classNames(cls.article, {}, [className])}>
-            {articles?.map((item) => (
-                item.blocks.map((block) => {
-                    switch (block.type) {
-                    case 'TEXT':
-                        return 'text';
-                    case 'CODE':
-                        return 'code';
-                    case 'IMAGE':
-                        return 'image';
-                    default:
-                        return null;
-                    }
-                })
-            ))}
+            {article.blocks.map((block) => {
+                switch (block.type) {
+                case 'TEXT':
+                    return (<ArticleText key={block.id} block={block} />);
+                case 'CODE':
+                    return (<ArticleCode key={block.id} block={block} />);
+                case 'IMAGE':
+                    return (<ArticleImage key={block.id} block={block} />);
+                default:
+                    return null;
+                }
+            })}
         </div>
     );
 };

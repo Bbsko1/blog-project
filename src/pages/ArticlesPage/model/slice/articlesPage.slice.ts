@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ArticleSchema } from '../types';
+import { ArticlesSchema } from '../types';
 import { fetchArticles } from '../services/fetchArticles';
 
-const initialState: ArticleSchema = {
+const initialState: ArticlesSchema = {
     isLoading: false,
     articles: null,
 };
 
-export const articleSlice = createSlice({
-    name: 'Article',
+export const articlesSlice = createSlice({
+    name: 'Articles',
     initialState,
     reducers: {
         /* test: (state, action: PayloadAction<test>) => {
@@ -18,10 +18,17 @@ export const articleSlice = createSlice({
     extraReducers(builder) {
         builder
             // fetchArticles
+            .addCase(fetchArticles.pending, (state) => {
+                state.isLoading = true;
+            })
             .addCase(fetchArticles.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
                 state.articles = payload;
+            })
+            .addCase(fetchArticles.rejected, (state) => {
+                state.isLoading = false;
             });
     },
 });
 
-export const articleReducer = articleSlice.reducer;
+export const articlesReducer = articlesSlice.reducer;

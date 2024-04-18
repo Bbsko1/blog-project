@@ -1,15 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { Article } from '../types';
+import { ArticleData } from 'entities/Article';
 
-export const fetchArticles = createAsyncThunk<Article[], undefined, ThunkConfig<string>>(
-    'Article/fetchArticles',
+export const fetchArticles = createAsyncThunk<ArticleData[], undefined, ThunkConfig<string>>(
+    'Articles/fetchArticles',
     async (_, thunkApi) => {
         const { rejectWithValue, extra } = thunkApi;
         const { api } = extra;
 
         try {
-            const { data } = await api.get<Article[]>('/articles');
+            const { data } = await api.get<ArticleData[]>('/articles');
 
             if (!data || typeof data !== 'object') {
                 throw new Error();

@@ -1,17 +1,17 @@
-type ArticleBlockText = {
+export type ArticleBlockText = {
     id: string;
     type: 'TEXT';
     title: string;
     paragraphs: string[];
 }
 
-type ArticleBlockCode = {
+export type ArticleBlockCode = {
     id: string;
     type: 'CODE';
     code: string;
 }
 
-type ArticleBlockImage = {
+export type ArticleBlockImage = {
     id: string;
     type: 'IMAGE';
     src: string;
@@ -22,7 +22,7 @@ export type ArticleBlock = ArticleBlockText | ArticleBlockCode | ArticleBlockIma
 
 export type ArticleType = 'IT' | 'FINANCE';
 
-export type Article = {
+export interface ArticleData {
     id: string;
     title: string;
     subtitle: string;
@@ -31,9 +31,4 @@ export type Article = {
     createdAt: string;
     type: ArticleType[];
     blocks: ArticleBlock[];
-}
-
-export interface ArticleSchema {
-    articles: Article[] | null;
-    isLoading: boolean;
 }

@@ -84,5 +84,11 @@ module.exports = {
             }],
         },
     },
+    {
+        files: ['vite.config.ts'],
+        rules: {
+            'import/no-extraneous-dependencies': 'off',
+        },
+    },
     ],
 };
