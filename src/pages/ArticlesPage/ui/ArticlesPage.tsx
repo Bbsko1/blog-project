@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Link } from 'react-router-dom';
+import { Article } from 'entities/Article';
 import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -13,6 +14,8 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
             <Link to="/articles/1">
                 ARTICLES PAGE
             </Link>
+
+            <Article />
         </div>
     );
 };
