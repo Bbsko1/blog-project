@@ -6,6 +6,11 @@ import { useAppSelector } from 'shared/lib/hooks/useAppSelector';
 import { ReactNode, useCallback, useEffect } from 'react';
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import EyeIcon from 'shared/assets/icons/eye.svg';
+import CalendarIcon from 'shared/assets/icons/calendar.svg';
+import { Icon } from 'shared/ui/Icon/Icon';
+import { Navigate } from 'react-router-dom';
+import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
 import cls from './ArticleDetail.module.scss';
 import { ArticleBlock } from '../../model/types';
 import { ArticleText } from '../ArticleText/ArticleText';
@@ -57,11 +62,13 @@ export const ArticleDetail = ({ className, id }: ArticleDetailProps) => {
                 <Skeleton className={cls.skeleton} height={230} />
             </>
         );
+    } else if (error && error === '404') {
+        content = <Navigate to={RoutePath[AppRoutes.NOT_FOUND]} />;
     } else if (error) {
         content = error;
     } else if (article) {
         const {
-            blocks, createdAt, id, img, subtitle, title, type, views,
+            blocks, createdAt, img, subtitle, title, views,
         } = article;
         content = (
             <>
@@ -77,7 +84,18 @@ export const ArticleDetail = ({ className, id }: ArticleDetailProps) => {
                     className={cls.title}
                     title={title}
                     text={subtitle}
+                    textSize="L"
                 />
+
+                <div className={cls.iconWrap}>
+                    <Icon Svg={EyeIcon} />
+                    {views}
+                </div>
+
+                <div className={classNames(cls.iconWrap, {}, ['mb-20'])}>
+                    <Icon Svg={CalendarIcon} />
+                    {createdAt}
+                </div>
 
                 {blocks.map((block) => renderBlock(block))}
             </>
