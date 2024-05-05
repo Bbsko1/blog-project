@@ -1,10 +1,21 @@
 import {
-    CombinedState, Reducer, ReducersMapObject, configureStore,
+    AnyAction,
+    CombinedState, Middleware, Reducer, ReducersMapObject, ThunkDispatch, configureStore,
 } from '@reduxjs/toolkit';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
 import { StateSchema } from './StateSchema';
 import { createReducerManager } from './reducerManager';
+
+const customMiddleware: Middleware<
+    {}, unknown, ThunkDispatch<unknown, unknown, AnyAction>
+> = (storeAPI) => (next) => async (action) => {
+    if (__PROJECT__ === 'storybook' && action?.meta?.requestStatus) {
+        return next({ type: 'CANCEL_EDIT' });
+    }
+
+    return next(action);
+};
 
 export const createReduxStore = (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) => {
     const rootReducer: ReducersMapObject<StateSchema> = {
@@ -24,7 +35,7 @@ export const createReduxStore = (initialState?: StateSchema, asyncReducers?: Red
                     api: $api,
                 },
             },
-        }),
+        }).concat(customMiddleware),
     });
 
     // @ts-ignore

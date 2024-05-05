@@ -5,7 +5,9 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
-export function buildPlugins({ paths, isDev, analyze }: BuildOptions): WebpackPluginInstance[] {
+export function buildPlugins({
+    paths, isDev, analyze, project,
+}: BuildOptions): WebpackPluginInstance[] {
     return [
         new ProgressPlugin(),
         new HtmlWebpackPlugin({
@@ -17,6 +19,7 @@ export function buildPlugins({ paths, isDev, analyze }: BuildOptions): WebpackPl
         }),
         new DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
+            __PROJECT__: JSON.stringify(project),
         }),
         new ReactRefreshWebpackPlugin(),
         new BundleAnalyzerPlugin({
