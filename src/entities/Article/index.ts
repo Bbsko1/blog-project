@@ -1,2 +1,2 @@
-export { Article } from './ui/Article';
-export type { ArticleData } from './model/types';
+export { ArticleDetail } from './ui/ArticleDetail/ArticleDetail';
+export type { ArticleData, ArticleDetailSchema } from './model/types';

@@ -32,3 +32,9 @@ export interface ArticleData {
     type: ArticleType[];
     blocks: ArticleBlock[];
 }
+
+export interface ArticleDetailSchema {
+    article: ArticleData | null;
+    isLoading: boolean;
+    error: string | null;
+}

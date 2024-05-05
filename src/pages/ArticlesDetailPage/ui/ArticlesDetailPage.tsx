@@ -1,5 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
+import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { ArticleDetail } from 'entities/Article';
 import cls from './ArticlesDetailPage.module.scss';
 
 interface ArticlesDetailPageProps {
@@ -9,10 +11,14 @@ interface ArticlesDetailPageProps {
 const ArticlesDetailPage = ({ className }: ArticlesDetailPageProps) => {
     const { id } = useParams();
 
+    if (!id) {
+        return <Navigate to={RoutePath[AppRoutes.NOT_FOUND]} />;
+    }
+
     return (
         // eslint-disable-next-line i18next/no-literal-string
         <div className={classNames(cls.articlesDetailPage, {}, [className])}>
-            ARTICLES DETAIL PAGE
+            <ArticleDetail id={id} />
         </div>
     );
 };

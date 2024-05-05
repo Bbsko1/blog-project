@@ -9,8 +9,8 @@ interface ArticleCodeProps {
 
 export const ArticleCode = ({ className, block }: ArticleCodeProps) => {
     return (
-        <pre className={cls.pre}>
-            <code className={classNames(undefined, {}, [className])}>
+        <pre className={classNames(cls.pre, {}, [className])}>
+            <code>
                 {block.code}
             </code>
         </pre>

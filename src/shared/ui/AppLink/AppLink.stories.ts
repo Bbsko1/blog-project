@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { AppLink, AppLinkTheme } from './AppLink';
+import { AppLink } from './AppLink';
 
 const meta: Meta<typeof AppLink> = {
     title: 'shared/AppLink',
@@ -21,19 +21,19 @@ type Story = StoryObj<typeof AppLink>;
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 export const Primary: Story = {
     args: {
-        theme: AppLinkTheme.PRIMARY,
+        theme: 'primary',
     },
 };
 
 export const Inverted: Story = {
     args: {
-        theme: AppLinkTheme.INVERTED,
+        theme: 'inverted',
     },
 };
 
 export const PrimaryDark: Story = {
     args: {
-        theme: AppLinkTheme.PRIMARY,
+        theme: 'primary',
     },
     decorators: [
         ThemeDecorator(Theme.DARK),
@@ -42,7 +42,7 @@ export const PrimaryDark: Story = {
 
 export const InvertedDark: Story = {
     args: {
-        theme: AppLinkTheme.INVERTED,
+        theme: 'inverted',
     },
     decorators: [
         ThemeDecorator(Theme.DARK),

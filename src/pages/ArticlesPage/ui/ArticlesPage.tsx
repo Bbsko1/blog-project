@@ -1,6 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Link } from 'react-router-dom';
-import { Article } from 'entities/Article';
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useEffect } from 'react';
@@ -34,10 +33,6 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
             <Link to="/articles/1">
                 ARTICLES PAGE
             </Link>
-
-            {articles?.map((article) => (
-                <Article key={article.id} article={article} />
-            ))}
         </div>
     );
 };
