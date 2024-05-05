@@ -1,10 +1,8 @@
 .title {
-    font: var(--font-main-l);
     color: var(--primary-color);
 }
 
 .text {
-    font: var(--font-main-m);
     color: var(--secondary-color);
 }
 
@@ -30,4 +28,25 @@
 
 .right {
     text-align: right;
+}
+
+// test size
+.size_m {
+    & .title {
+        font: var(--font-main-l);
+    }
+
+    & .text {
+        font: var(--font-main-m);
+    }
+}
+
+.size_l {
+    & .title {
+        font: var(--font-main-xl);
+    }
+
+    & .text {
+        font: var(--font-main-l);
+    }
 }

@@ -43,6 +43,25 @@ export const TextTitleDark: Story = {
     ],
 };
 
+export const TextSizeXL: Story = {
+    args: {
+        title: 'Title',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, sequi.',
+        textSize: 'L',
+    },
+};
+
+export const TextSizeXLDark: Story = {
+    args: {
+        title: 'Title',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, sequi.',
+        textSize: 'L',
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK),
+    ],
+};
+
 export const OnlyText: Story = {
     args: {
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, sequi.',
