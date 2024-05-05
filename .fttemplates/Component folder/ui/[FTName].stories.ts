@@ -4,8 +4,8 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { <FTName | pascalcase> } from './<FTName | pascalcase>';
 
 const meta: Meta<typeof <FTName | pascalcase>> = {
-    // TODO: Выбрать нужный тип
-    title: 'Выбрать нужный тип/<FTName | pascalcase>',
+    // TODO: ВыбратьНужныйТип
+    title: 'ВыбратьНужныйТип/<FTName | pascalcase>',
     component: <FTName | pascalcase>,
     argTypes: {
         // backgroundColor: { control: 'color' },
